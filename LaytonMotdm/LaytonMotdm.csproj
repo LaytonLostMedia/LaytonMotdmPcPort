@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Nullable>enable</Nullable>
+    <!--<PublishAot>true</PublishAot>
+    <InvariantGlobalization>true</InvariantGlobalization>-->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Imgui.Forms" Version="1.0.54" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="5.0.1" />
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Images\layton.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Localizations\en.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <TargetPath>langs\en.json</TargetPath>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DocomoLayton\DocomoLayton.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,9 @@
+{
+  "Name": "English",
+
+  "Application.Title": "Layton MotDM",
+  "Application.Title.Chapter": "Layton MotDM Chapter {0}",
+
+  "Chapter.Selection.Label": "Select chapter:",
+  "Chapter.Selection.Caption": "Chapter {0}"
+}
