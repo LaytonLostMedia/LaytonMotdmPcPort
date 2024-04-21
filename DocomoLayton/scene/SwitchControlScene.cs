@@ -76,11 +76,11 @@ public class SwitchControlScene : ControlScene
     }
 
     [FunctionName("d")]
-    public override void d1(GameContext var1)
+    public override void UpdateInternal(GameContext var1)
     {
         JavaString var2;
         int var3;
-        if ((var2 = e1(var1)).Equals("answer"))
+        if ((var2 = GetPressedButtonCaption(var1)).Equals("answer"))
         {
             var3 = 0;
 
@@ -126,14 +126,14 @@ public class SwitchControlScene : ControlScene
                 }
 
                 v[A].SetImage(D[A][z[A]]);
-                AudioManager.b1(1, n[1], 100);
+                AudioManager.PlaySound(1, n[1], 100);
             }
             else if ((var3 = var1.MoveCursor(A, K, J, false)) != -1)
             {
                 A = var3;
                 w.SetPosition(H[A], I[A]);
                 w.SetFlipMode(_flipModes[A]);
-                AudioManager.b1(1, n[8], 100);
+                AudioManager.PlaySound(1, n[8], 100);
                 B = 0;
             }
 
@@ -245,11 +245,11 @@ public class SwitchControlScene : ControlScene
     }
 
     [FunctionName("f")]
-    public override void f1()
+    public override void ResetInternal()
     {
         if (a != null)
         {
-            a.d();
+            a.Dispose();
             a = null;
         }
 
@@ -258,7 +258,7 @@ public class SwitchControlScene : ControlScene
         {
             for (var1 = 0; var1 < v.Length; ++var1)
             {
-                v[var1].d();
+                v[var1].Dispose();
             }
 
             v = null;
@@ -266,7 +266,7 @@ public class SwitchControlScene : ControlScene
 
         if (w != null)
         {
-            w.d();
+            w.Dispose();
             w = null;
         }
 

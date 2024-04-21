@@ -53,7 +53,7 @@ public class AudioManager : MediaListener
     }
 
     [FunctionName("b")]
-    public static bool b1(int paramInt1, MediaSound paramMediaSound, int paramInt2)
+    public static bool PlaySound(int paramInt1, MediaSound paramMediaSound, int paramInt2)
     {
         return a1(paramInt1, paramMediaSound, paramInt2, 0, false);
     }
@@ -92,7 +92,7 @@ public class AudioManager : MediaListener
     }
 
     [FunctionName("a")]
-    public static bool a1(int paramInt)
+    public static bool StopSound(int paramInt)
     {
         try
         {
@@ -114,7 +114,7 @@ public class AudioManager : MediaListener
     {
         for (byte b = 0; b < g; b++)
         {
-            if (!a1(b))
+            if (!StopSound(b))
                 return false;
         }
         return true;
@@ -187,7 +187,7 @@ public class AudioManager : MediaListener
         {
             try
             {
-                a1(paramInt);
+                StopSound(paramInt);
                 f[paramInt].SetSound(paramMediaSound);
             }
             catch (Exception exception)
@@ -252,7 +252,7 @@ public class AudioManager : MediaListener
                 }
                 else
                 {
-                    a1(b);
+                    StopSound(b);
                     l[b] = 2;
                 }
             }

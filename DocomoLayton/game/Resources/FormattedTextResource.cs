@@ -322,12 +322,12 @@ public class FormattedTextResource : FormattedTextResourceBase
 
         P = var1;
         o[var1].SetIsVisible(true);
-        o[1].SetPosition(n[10]._posX - 1, n[10]._posY - 1);
-        o[2].SetPosition(n[11]._posX - 1, n[11]._posY - 1);
-        o[3].SetPosition(n[12]._posX - 1, n[12]._posY - 1);
-        o[4].SetPosition(n[15]._posX - 1, n[15]._posY - 1);
-        o[5].SetPosition(n[14]._posX - 1, n[14]._posY - 1);
-        o[6].SetPosition(n[13]._posX - 1, n[13]._posY - 1);
+        o[1].SetPosition(n[10].posX - 1, n[10].posY - 1);
+        o[2].SetPosition(n[11].posX - 1, n[11].posY - 1);
+        o[3].SetPosition(n[12].posX - 1, n[12].posY - 1);
+        o[4].SetPosition(n[15].posX - 1, n[15].posY - 1);
+        o[5].SetPosition(n[14].posX - 1, n[14].posY - 1);
+        o[6].SetPosition(n[13].posX - 1, n[13].posY - 1);
     }
 
     [FunctionName("g")]

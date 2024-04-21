@@ -90,7 +90,7 @@ public class KeyboardControlScene : ControlScene
     }
 
     [FunctionName("d")]
-    public override void d1(GameContext var1)
+    public override void UpdateInternal(GameContext var1)
     {
         switch (y)
         {
@@ -160,14 +160,14 @@ public class KeyboardControlScene : ControlScene
                         return;
                     }
                 }
-                else if (e1(var1).Equals("pre_return"))
+                else if (GetPressedButtonCaption(var1).Equals("pre_return"))
                 {
                     y = 2;
                     return;
                 }
                 break;
             case 2:
-                if (e1(var1).Equals("return"))
+                if (GetPressedButtonCaption(var1).Equals("return"))
                 {
                     c1();
                 }
@@ -208,10 +208,10 @@ public class KeyboardControlScene : ControlScene
     }
 
     [FunctionName("f")]
-    public override void f1()
+    public override void ResetInternal()
     {
         w.RemoveChild(x);
-        x.d();
+        x.Dispose();
         x = null;
         z.Dispose();
         z = null;

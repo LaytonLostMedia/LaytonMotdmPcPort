@@ -56,18 +56,18 @@ public class RectangleResource : ResourceBase
         if (_rectangleType == RECT_HOLLOW)
         {
             // Rectangle outline
-            g.DrawRect(x + _posX, y + _posY, _width - 1, _height - 1);
+            g.DrawRect(x + posX, y + posY, _width - 1, _height - 1);
         }
         else if (_rectangleType == RECT_FILL)
         {
             // Rectangle filled
-            g.FillRect(x + _posX, y + _posY, _width, _height);
+            g.FillRect(x + posX, y + posY, _width, _height);
         }
         else
         {
             // Rectangle gradient
-            x += _posX;
-            y += _posY;
+            x += posX;
+            y += posY;
             int var4 = x + _width;
 
             for (var h = 0; h < _height; ++h)

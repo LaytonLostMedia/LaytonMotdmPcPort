@@ -26,17 +26,17 @@ public class ScriptTextResource : ResourceBase
     [MemberName("q")]
     private static int[] q = new int[] { 0, 120, 240 };
     [MemberName("r")]
-    private static int r = 0;
+    private static int _textAnchor = 0;
     [MemberName("s")]
     private static int _lineHeight = 14;
     [MemberName("t")]
     private static int _lineCount;
     [MemberName("u")]
-    private static bool u = false;
+    private static bool _hasShadow = false;
     [MemberName("v")]
-    private static int v = -1;
+    private static int _shadowColor = -1;
     [MemberName("w")]
-    private static int w = -1;
+    private static int _textColor = -1;
 
     [MemberName("x")]
     private bool x;
@@ -92,7 +92,7 @@ public class ScriptTextResource : ResourceBase
         n = -1;
         o = null;
         p = 0;
-        r = 0;
+        _textAnchor = 0;
         _lineHeight = 14;
         _lineCount = 0;
         x = false;
@@ -100,9 +100,9 @@ public class ScriptTextResource : ResourceBase
         z = 0;
         A = 0;
         D = 10;
-        u = false;
-        v = -1;
-        w = -1;
+        _hasShadow = false;
+        _shadowColor = -1;
+        _textColor = -1;
     }
 
     [FunctionName("a")]
@@ -164,10 +164,10 @@ public class ScriptTextResource : ResourceBase
         g.SetFont(GameContext.Font);
         _lineHeight = GameContext.Font.GetHeight() + 1;
         a = false;
-        r = 0;
+        _textAnchor = 0;
         A = 0;
-        q[0] = _posX;
-        int var4 = _posY;
+        q[0] = posX;
+        int var4 = posY;
         int var5 = 0;
         int var6 = 0;
         bool var7 = false;
@@ -196,10 +196,10 @@ public class ScriptTextResource : ResourceBase
             }
         }
 
-        w = Graphics.GetColorOfRGB(0, 0, 0);
-        g.SetColor(w);
-        v = -1;
-        u = false;
+        _textColor = Graphics.GetColorOfRGB(0, 0, 0);
+        g.SetColor(_textColor);
+        _shadowColor = -1;
+        _hasShadow = false;
         g.SetOrigin(x, y);
 
         for (ScriptTextResource.y = z; var6 != var21; ++var6)
@@ -212,7 +212,7 @@ public class ScriptTextResource : ResourceBase
             }
             else if (var22 == "[l]")
             {
-                r = 0;
+                _textAnchor = 0;
             }
             else
             {
@@ -223,16 +223,16 @@ public class ScriptTextResource : ResourceBase
 
                 if (var22 == "[c]")
                 {
-                    r = 1;
+                    _textAnchor = 1;
                 }
                 else if (var22 == "[r]")
                 {
-                    r = 2;
+                    _textAnchor = 2;
                 }
                 else if (var22 == "[/sdw]")
                 {
-                    v = -1;
-                    u = false;
+                    _shadowColor = -1;
+                    _hasShadow = false;
                 }
                 else
                 {
@@ -290,7 +290,7 @@ public class ScriptTextResource : ResourceBase
                         catch (Exception var20)
                         {
                             g.SetColor(Graphics.GetColorOfRGB(255, 0, 0));
-                            a1(g, "ER[rgb=r,g,b] p=" + p + " i_s=" + var6 + " " + var22, 10, 20, 0);
+                            DrawText(g, "ER[rgb=r,g,b] p=" + p + " i_s=" + var6 + " " + var22, 10, 20, 0);
                         }
                     }
                     else if (var22.IndexOf("[scd=") != -1)
@@ -339,11 +339,11 @@ public class ScriptTextResource : ResourceBase
                                 {
                                     if (var15[1] == "play")
                                     {
-                                        AudioManager.b1(int.Parse(var15[2]), GameContext.FileManager.GetLoadedSound(var15[3]), 100);
+                                        AudioManager.PlaySound(int.Parse(var15[2]), GameContext.FileManager.GetLoadedSound(var15[3]), 100);
                                     }
                                     else if (var15[1] == "stop")
                                     {
-                                        AudioManager.a1(int.Parse(var15[2]));
+                                        AudioManager.StopSound(int.Parse(var15[2]));
                                     }
                                 }
 
@@ -354,7 +354,7 @@ public class ScriptTextResource : ResourceBase
                         catch (Exception var19)
                         {
                             g.SetColor(Graphics.GetColorOfRGB(255, 0, 0));
-                            a1(g, "ER[rgb=r,g,b] p=" + p + " i_s=" + var6 + " " + var22, 10, 20, 0);
+                            DrawText(g, "ER[rgb=r,g,b] p=" + p + " i_s=" + var6 + " " + var22, 10, 20, 0);
                         }
                     }
                     else if (var22.IndexOf("[msg=") != -1)
@@ -397,11 +397,11 @@ public class ScriptTextResource : ResourceBase
                         catch (Exception var18)
                         {
                             g.SetColor(Graphics.GetColorOfRGB(255, 0, 0));
-                            a1(g, "ER[rgb=r,g,b] p=" + p + " i_s=" + var6 + " " + var22, 10, 20, 0);
+                            DrawText(g, "ER[rgb=r,g,b] p=" + p + " i_s=" + var6 + " " + var22, 10, 20, 0);
                         }
 
-                        w = Graphics.GetColorOfRGB(var12, var13, var14);
-                        g.SetColor(w);
+                        _textColor = Graphics.GetColorOfRGB(var12, var13, var14);
+                        g.SetColor(_textColor);
                     }
                     else if (var22.IndexOf("[sdw=") != -1)
                     {
@@ -424,25 +424,25 @@ public class ScriptTextResource : ResourceBase
                         catch (Exception var17)
                         {
                             g.SetColor(Graphics.GetColorOfRGB(255, 0, 0));
-                            a1(g, "ER[rgb=r,g,b] p=" + p + " i_s=" + var6 + " " + var22, 10, 20, 0);
+                            DrawText(g, "ER[rgb=r,g,b] p=" + p + " i_s=" + var6 + " " + var22, 10, 20, 0);
                         }
 
-                        v = Graphics.GetColorOfRGB(var12, var13, var14);
-                        u = true;
+                        _shadowColor = Graphics.GetColorOfRGB(var12, var13, var14);
+                        _hasShadow = true;
                     }
                     else if (this.x)
                     {
                         if (ScriptTextResource.y < var22.Length)
                         {
                             JavaString var23 = var22.Substring(0, ScriptTextResource.y);
-                            if (u)
+                            if (_hasShadow)
                             {
-                                g.SetColor(v);
-                                a1(g, var23, q[r] + var5 + 1, var4 + 1, r);
-                                g.SetColor(w);
+                                g.SetColor(_shadowColor);
+                                DrawText(g, var23, q[_textAnchor] + var5 + 1, var4 + 1, _textAnchor);
+                                g.SetColor(_textColor);
                             }
 
-                            a1(g, var23, q[r] + var5, var4, r);
+                            DrawText(g, var23, q[_textAnchor] + var5, var4, _textAnchor);
                             if (var8)
                             {
                                 GameContext.Font.GetBoundingBoxWidth(var22);
@@ -457,14 +457,14 @@ public class ScriptTextResource : ResourceBase
                             break;
                         }
 
-                        if (u)
+                        if (_hasShadow)
                         {
-                            g.SetColor(v);
-                            a1(g, var22, q[r] + var5 + 1, var4 + 1, r);
-                            g.SetColor(w);
+                            g.SetColor(_shadowColor);
+                            DrawText(g, var22, q[_textAnchor] + var5 + 1, var4 + 1, _textAnchor);
+                            g.SetColor(_textColor);
                         }
 
-                        a1(g, var22, q[r] + var5, var4, r);
+                        DrawText(g, var22, q[_textAnchor] + var5, var4, _textAnchor);
                         if (var8)
                         {
                             var5 += GameContext.Font.GetBoundingBoxWidth(var22);
@@ -480,14 +480,14 @@ public class ScriptTextResource : ResourceBase
                     }
                     else
                     {
-                        if (u)
+                        if (_hasShadow)
                         {
-                            g.SetColor(v);
-                            a1(g, var22, q[r] + var5 + 1, var4 + 1, r);
-                            g.SetColor(w);
+                            g.SetColor(_shadowColor);
+                            DrawText(g, var22, q[_textAnchor] + var5 + 1, var4 + 1, _textAnchor);
+                            g.SetColor(_textColor);
                         }
 
-                        a1(g, var22, q[r] + var5, var4, r);
+                        DrawText(g, var22, q[_textAnchor] + var5, var4, _textAnchor);
                         if (var8)
                         {
                             var5 += GameContext.Font.GetBoundingBoxWidth(var22);
@@ -546,7 +546,7 @@ public class ScriptTextResource : ResourceBase
             }
 
             ++p;
-            j();
+            Reset();
         }
 
         return true;
@@ -576,7 +576,7 @@ public class ScriptTextResource : ResourceBase
     }
 
     [FunctionName("j")]
-    public void j()
+    public void Reset()
     {
         a = false;
         if (l == null)
@@ -601,7 +601,7 @@ public class ScriptTextResource : ResourceBase
         m.Add(-1);
         n = -1;
         o = null;
-        r = 0;
+        _textAnchor = ANCHOR_LEFT;
         _lineHeight = 14;
         _lineCount = 0;
         x = false;
@@ -612,19 +612,19 @@ public class ScriptTextResource : ResourceBase
     }
 
     [FunctionName("a")]
-    private static void a1(Graphics var0, JavaString var1, int var2, int var3, int var4)
+    private static void DrawText(Graphics var0, JavaString text, int x, int y, int anchor)
     {
-        var3 += GameContext.Font.GetAscent();
-        if (var4 == 1)
+        y += GameContext.Font.GetAscent();
+        if (anchor == ANCHOR_CENTER)
         {
-            var2 -= GameContext.Font.GetBoundingBoxWidth(var1) / 2;
+            x -= GameContext.Font.GetBoundingBoxWidth(text) / 2;
         }
-        else if (var4 == 2)
+        else if (anchor == ANCHOR_RIGHT)
         {
-            var2 -= GameContext.Font.GetBoundingBoxWidth(var1);
+            x -= GameContext.Font.GetBoundingBoxWidth(text);
         }
 
-        var0.DrawString(var1, var2, var3);
+        var0.DrawString(text, x, y);
     }
 
     [FunctionName("a")]

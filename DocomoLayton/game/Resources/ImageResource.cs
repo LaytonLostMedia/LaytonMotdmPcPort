@@ -67,8 +67,8 @@ public class ImageResource : ResourceBase
     [ConstructorName("b")]
     private ImageResource()
     {
-        _posX = 0;
-        _posY = 0;
+        posX = 0;
+        posY = 0;
         _width = 0;
         _height = 0;
         v = 1.0F;
@@ -119,8 +119,8 @@ public class ImageResource : ResourceBase
         (var1 = new ImageResource()).SetImage(var0._img);
         var1.SetAnchorType(var0._anchorType);
         var1.SetFlipMode(var0._flipMode);
-        var1._posX = var0._posX;
-        var1._posY = var0._posY;
+        var1.posX = var0.posX;
+        var1.posY = var0.posY;
         if (var0.a != null)
         {
             Palette var2 = var0.a;
@@ -147,10 +147,10 @@ public class ImageResource : ResourceBase
                 float var5 = FastMath.Sin(_sizeScale);
                 z[0] = (int)(4096.0F * var4 * v);
                 z[1] = (int)(4096.0F * -var5 * w);
-                z[2] = (int)(4096.0F * (_posX + (float)x + _anchorPosX + _width - _width * var4 * v + _height * var5 * w));
+                z[2] = (int)(4096.0F * (posX + (float)x + _anchorPosX + _width - _width * var4 * v + _height * var5 * w));
                 z[3] = (int)(4096.0F * var5 * v);
                 z[4] = (int)(4096.0F * var4 * w);
-                z[5] = (int)(4096.0F * (_posY + (float)y + _height - _width * var5 * v - _height * var4 * w));
+                z[5] = (int)(4096.0F * (posY + (float)y + _height - _width * var5 * v - _height * var4 * w));
                 if (_isClipped)
                 {
                     g.DrawImage(_img, z, _clipPosX, _clipPosY, _clipWidth, _clipHeight);
@@ -170,12 +170,12 @@ public class ImageResource : ResourceBase
 
                 if (_isClipped)
                 {
-                    g.DrawImage(_img, x + _posX + _anchorPosX, y + _posY, _clipPosX, _clipPosY, _clipWidth, _clipHeight);
+                    g.DrawImage(_img, x + posX + _anchorPosX, y + posY, _clipPosX, _clipPosY, _clipWidth, _clipHeight);
                     i();
                 }
                 else
                 {
-                    g.DrawImage(_img, x + _posX + _anchorPosX, y + _posY);
+                    g.DrawImage(_img, x + posX + _anchorPosX, y + posY);
                 }
             }
 
@@ -421,7 +421,7 @@ public class ImageResource : ResourceBase
     }
 
     [FunctionName("d")]
-    public void d()
+    public void Dispose()
     {
         _img = null;
         a = null;

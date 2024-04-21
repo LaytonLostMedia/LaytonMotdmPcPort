@@ -56,8 +56,8 @@ public class AnimatedImageResource : ResourceBase
     [ConstructorName("d")]
     private AnimatedImageResource()
     {
-        _posX = 0;
-        _posY = 0;
+        posX = 0;
+        posY = 0;
 
         _image = new Image[4];
 
@@ -146,7 +146,7 @@ public class AnimatedImageResource : ResourceBase
                     partPosX = _partSrcWidths[0] - partPosX - _partSrcWidths[i];
                 }
 
-                g.DrawImage(_image[i], x + _posX + _anchorPosX + partPosX, y + _posY + _partDestYPositions[i], _partSrcXPositions[i], _partSrcYPositions[i], _partSrcWidths[i], _partSrcHeights[i]);
+                g.DrawImage(_image[i], x + posX + _anchorPosX + partPosX, y + posY + _partDestYPositions[i], _partSrcXPositions[i], _partSrcYPositions[i], _partSrcWidths[i], _partSrcHeights[i]);
             }
 
             g.SetFlipMode(Graphics.FLIP_NONE);

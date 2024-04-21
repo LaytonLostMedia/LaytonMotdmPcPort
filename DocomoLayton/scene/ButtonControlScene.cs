@@ -48,11 +48,11 @@ public class ButtonControlScene : ControlScene
     }
 
     [FunctionName("d")]
-    public override void d1(GameContext var1)
+    public override void UpdateInternal(GameContext var1)
     {
         if (!a.Equals(""))
         {
-            a = e1(var1);
+            a = GetPressedButtonCaption(var1);
         }
         else
         {
@@ -63,11 +63,11 @@ public class ButtonControlScene : ControlScene
                 {
                 }
 
-                a = e1(var1);
+                a = GetPressedButtonCaption(var1);
             }
             else
             {
-                AudioManager.b1(1, n[1], 100);
+                AudioManager.PlaySound(1, n[1], 100);
                 if (var2.Equals("true"))
                 {
                     a1(var1, true);
@@ -110,7 +110,7 @@ public class ButtonControlScene : ControlScene
     }
 
     [FunctionName("f")]
-    public override void f1()
+    public override void ResetInternal()
     {
         if (w != null)
         {

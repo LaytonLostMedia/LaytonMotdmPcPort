@@ -27,8 +27,8 @@ public class LineResource : ResourceBase
     [ConstructorName("j")]
     private LineResource()
     {
-        _posX = 0;
-        _posY = 0;
+        posX = 0;
+        posY = 0;
         _targetX = 0;
         _targetY = 0;
         _r = 0;
@@ -52,19 +52,19 @@ public class LineResource : ResourceBase
     protected override void PaintInternal(Graphics g, int x, int y)
     {
         g.SetColor(_color);
-        g.DrawLine(x + _posX, y + _posY, x + _targetX, y + _targetY);
+        g.DrawLine(x + posX, y + posY, x + _targetX, y + _targetY);
     }
 
     [FunctionName("b")]
     public override int GetHeight()
     {
-        return Math.Abs(_posY - _targetY);
+        return Math.Abs(posY - _targetY);
     }
 
     [FunctionName("a")]
     public override int GetWidth()
     {
-        return Math.Abs(_posX - _targetX);
+        return Math.Abs(posX - _targetX);
     }
 
     [FunctionName("c")]

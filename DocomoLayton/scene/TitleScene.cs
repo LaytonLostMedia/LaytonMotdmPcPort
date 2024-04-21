@@ -207,8 +207,8 @@ public class TitleScene : IScene
     {
         ScreenResource var2 = gameContext.ScreenResource;
 
-        _resources[10].SetPosition(_resources[_selectedMenu * 2]._posX + _resources[0 + _selectedMenu * 2].GetWidth() + 1, 95 + _selectedMenu * 19);
-        _resources[11].SetPosition(_resources[_selectedMenu * 2]._posX - 9, 95 + _selectedMenu * 19);
+        _resources[10].SetPosition(_resources[_selectedMenu * 2].posX + _resources[0 + _selectedMenu * 2].GetWidth() + 1, 95 + _selectedMenu * 19);
+        _resources[11].SetPosition(_resources[_selectedMenu * 2].posX - 9, 95 + _selectedMenu * 19);
 
         switch (_state)
         {
@@ -444,7 +444,7 @@ public class TitleScene : IScene
                             gameContext.Reset();
                             gameContext.RoomData.SetEventId(0);
                             gameContext.SetCurrentScene(EventScene.GetInstance());
-                            AudioManager.a1(0);
+                            AudioManager.StopSound(0);
                             break;
 
                         // Load save

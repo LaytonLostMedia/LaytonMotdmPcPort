@@ -11,13 +11,13 @@ namespace DocomoLayton.scene;
 public class SelectionControlScene : ControlScene
 {
     [MemberName("a")]
-    private ImageResource a = null;
+    private ImageResource _backgroundResource = null;
     [MemberName("v")]
-    private ImageResource[] v = null;
+    private ImageResource[] _elementImgResource = null;
     [MemberName("w")]
-    private ImageResource w = null;
+    private ImageResource _selectorResource = null;
     [MemberName("x")]
-    private ScreenResource x = null;
+    private ScreenResource _screenResource = null;
     [MemberName("y")]
     private bool y;
     [MemberName("z")]
@@ -28,32 +28,33 @@ public class SelectionControlScene : ControlScene
     private int[] B;
     [MemberName("C")]
     private int C;
+
     [MemberName("D")]
-    private Image D;
+    private Image _backgroundImg;
     [MemberName("E")]
-    private Image[] E;
+    private Image[] _elementImages;
     [MemberName("F")]
-    private int[] F;
+    private int[] _elementSlots;
     [MemberName("G")]
-    private int[] G;
+    private int[] _elementIds;
     [MemberName("H")]
-    private int[] H;
+    private int[] _imgPosXUnselected;
     [MemberName("I")]
-    private int[] I;
+    private int[] _imgPosYUnselected;
     [MemberName("J")]
-    private int[] J;
+    private int[] _selectorFlipMode;
     [MemberName("K")]
-    private int[] K;
+    private int[] _selectorPosX;
     [MemberName("L")]
-    private int[] L;
+    private int[] _selectorPosY;
     [MemberName("M")]
-    private int[] M;
+    private int[] _orderY;
     [MemberName("N")]
-    private int[] N;
+    private int[] _orderX;
     [MemberName("O")]
-    private int[] O;
+    private int[] _orderIds;
     [MemberName("P")]
-    private JavaString[] P;
+    private JavaString[] _solutions;
 
     [FunctionName("a")]
     public static SelectionControlScene Create()
@@ -70,42 +71,42 @@ public class SelectionControlScene : ControlScene
     public override int a1(GameContext var1, object[] var2)
     {
         SelectionControlScene var3 = (SelectionControlScene)var2[0];
-        D = var3.D;
-        E = var3.E;
-        F = var3.F;
-        G = var3.G;
-        H = var3.H;
-        I = var3.I;
-        J = var3.J;
-        K = var3.K;
-        L = var3.L;
-        M = var3.M;
-        N = var3.N;
-        O = var3.O;
-        P = var3.P;
+        _backgroundImg = var3._backgroundImg;
+        _elementImages = var3._elementImages;
+        _elementSlots = var3._elementSlots;
+        _elementIds = var3._elementIds;
+        _imgPosXUnselected = var3._imgPosXUnselected;
+        _imgPosYUnselected = var3._imgPosYUnselected;
+        _selectorFlipMode = var3._selectorFlipMode;
+        _selectorPosX = var3._selectorPosX;
+        _selectorPosY = var3._selectorPosY;
+        _orderY = var3._orderY;
+        _orderX = var3._orderX;
+        _orderIds = var3._orderIds;
+        _solutions = var3._solutions;
         return 1;
     }
 
     [FunctionName("b")]
     public override void b1()
     {
-        w.SetIsVisible(true);
-        a.AddChild((ResourceBase)w);
+        _selectorResource.SetIsVisible(true);
+        _backgroundResource.AddChild((ResourceBase)_selectorResource);
     }
 
     [FunctionName("d")]
-    public override void d1(GameContext var1)
+    public override void UpdateInternal(GameContext var1)
     {
         JavaString var2;
-        if (!(var2 = e1(var1)).Equals("answer"))
+        if (!(var2 = GetPressedButtonCaption(var1)).Equals("answer"))
         {
             if (var2.Equals("pre_return"))
             {
-                w.SetIsVisible(false);
+                _selectorResource.SetIsVisible(false);
             }
             else if (var2.Equals("return"))
             {
-                w.SetIsVisible(false);
+                _selectorResource.SetIsVisible(false);
             }
             else if (var2.Equals("reset"))
             {
@@ -123,11 +124,11 @@ public class SelectionControlScene : ControlScene
                         if (B[z] != -1)
                         {
                             C = B[z];
-                            v[C]._posY = I[z] + -10;
-                            a.a1(v[C], 1);
-                            w._posY = L[z];
+                            _elementImgResource[C].posY = _imgPosYUnselected[z] + -10;
+                            _backgroundResource.a1(_elementImgResource[C], 1);
+                            _selectorResource.posY = _selectorPosY[z];
                             B[z] = -1;
-                            AudioManager.b1(1, n[1], 100);
+                            AudioManager.PlaySound(1, n[1], 100);
                             A = 0;
                         }
                     }
@@ -137,38 +138,38 @@ public class SelectionControlScene : ControlScene
                         {
                             var7 = B[z];
                             B[z] = C;
-                            v[B[z]].SetPosition(H[z], I[z]);
+                            _elementImgResource[B[z]].SetPosition(_imgPosXUnselected[z], _imgPosYUnselected[z]);
                             C = var7;
-                            v[C]._posY = I[z] + -10;
-                            a.a1(v[C], 1);
+                            _elementImgResource[C].posY = _imgPosYUnselected[z] + -10;
+                            _backgroundResource.a1(_elementImgResource[C], 1);
                         }
                         else
                         {
                             B[z] = C;
-                            v[B[z]].SetPosition(H[z], I[z]);
+                            _elementImgResource[B[z]].SetPosition(_imgPosXUnselected[z], _imgPosYUnselected[z]);
                             C = -1;
                         }
 
-                        AudioManager.b1(1, n[1], 100);
+                        AudioManager.PlaySound(1, n[1], 100);
                     }
                 }
-                else if ((var7 = var1.MoveCursor(z, N, M, false)) != -1)
+                else if ((var7 = var1.MoveCursor(z, _orderX, _orderY, false)) != -1)
                 {
                     z = var7;
-                    w.SetPosition(K[z], L[z]);
-                    w.SetFlipMode(J[z]);
+                    _selectorResource.SetPosition(_selectorPosX[z], _selectorPosY[z]);
+                    _selectorResource.SetFlipMode(_selectorFlipMode[z]);
                     if (C != -1)
                     {
-                        v[C].SetPosition(H[z], I[z] + -10);
+                        _elementImgResource[C].SetPosition(_imgPosXUnselected[z], _imgPosYUnselected[z] + -10);
                     }
 
-                    AudioManager.b1(1, n[8], 100);
+                    AudioManager.PlaySound(1, n[8], 100);
                     A = 0;
                 }
 
                 if (C == -1)
                 {
-                    GameContext.a1(w, K[z], L[z], A);
+                    GameContext.a1(_selectorResource, _selectorPosX[z], _selectorPosY[z], A);
                     ++A;
                 }
 
@@ -184,29 +185,29 @@ public class SelectionControlScene : ControlScene
                 }
 
                 B[z] = C;
-                v[B[z]].SetPosition(H[z], I[z]);
+                _elementImgResource[B[z]].SetPosition(_imgPosXUnselected[z], _imgPosYUnselected[z]);
                 C = -1;
             }
 
             JavaString[] var3 = new JavaString[B.Length];
 
-            bool var5;
-            int var6;
+            bool isEmpty;
+            int j;
             for (int var4 = 0; var4 < B.Length; ++var4)
             {
-                var5 = false;
+                isEmpty = false;
 
-                for (var6 = 0; var6 < P.Length; ++var6)
+                for (j = 0; j < _solutions.Length; ++j)
                 {
-                    if (a1(P[var6], var4))
+                    if (IsSolutionSlotEmpty(_solutions[j], var4))
                     {
-                        var5 = true;
+                        isEmpty = true;
                         break;
                     }
                 }
 
-                JavaString var10 = var5 ? "-" : (B[var4] == -1 ? "x" : G[B[var4]].ToString());
-                var3[O[var4]] = var10;
+                JavaString var10 = isEmpty ? "-" : (B[var4] == -1 ? "x" : _elementIds[B[var4]].ToString());
+                var3[_orderIds[var4]] = var10;
             }
 
             JavaString var8 = "";
@@ -221,18 +222,18 @@ public class SelectionControlScene : ControlScene
                 var8 = var8 + var3[var9];
             }
 
-            var5 = false;
+            isEmpty = false;
 
-            for (var6 = 0; var6 < P.Length; ++var6)
+            for (j = 0; j < _solutions.Length; ++j)
             {
-                if (var8.Equals(P[var6]))
+                if (var8.Equals(_solutions[j]))
                 {
-                    var5 = true;
+                    isEmpty = true;
                     break;
                 }
             }
 
-            if (var5)
+            if (isEmpty)
             {
                 a1(var1, true);
             }
@@ -246,31 +247,31 @@ public class SelectionControlScene : ControlScene
     [FunctionName("a")]
     public override void a1(ScreenResource var1)
     {
-        x = var1;
-        if (a == null)
+        _screenResource = var1;
+        if (_backgroundResource == null)
         {
-            a = ImageResource.Create(D);
+            _backgroundResource = ImageResource.Create(_backgroundImg);
         }
 
-        if (v == null)
+        if (_elementImgResource == null)
         {
-            v = new ImageResource[E.Length];
+            _elementImgResource = new ImageResource[_elementImages.Length];
 
-            for (int var2 = 0; var2 < v.Length; ++var2)
+            for (int var2 = 0; var2 < _elementImgResource.Length; ++var2)
             {
-                v[var2] = ImageResource.Create(E[var2]);
+                _elementImgResource[var2] = ImageResource.Create(_elementImages[var2]);
             }
         }
 
-        if (w == null)
+        if (_selectorResource == null)
         {
-            w = ImageResource.Create(f);
-            w.SetIsVisible(false);
+            _selectorResource = ImageResource.Create(f);
+            _selectorResource.SetIsVisible(false);
         }
 
-        x.SetIsVisible(true);
+        _screenResource.SetIsVisible(true);
         y = false;
-        B = new int[H.Length];
+        B = new int[_imgPosXUnselected.Length];
     }
 
     [FunctionName("d")]
@@ -278,7 +279,7 @@ public class SelectionControlScene : ControlScene
     {
         if (!y)
         {
-            x.SetIsVisible(false);
+            _screenResource.SetIsVisible(false);
         }
     }
 
@@ -286,16 +287,16 @@ public class SelectionControlScene : ControlScene
     public override void c1()
     {
         int var1;
-        if (x != null)
+        if (_screenResource != null)
         {
-            x.RemoveChild(a);
+            _screenResource.RemoveChild(_backgroundResource);
 
-            for (var1 = 0; var1 < v.Length; ++var1)
+            for (var1 = 0; var1 < _elementImgResource.Length; ++var1)
             {
-                a.RemoveChild(v[var1]);
+                _backgroundResource.RemoveChild(_elementImgResource[var1]);
             }
 
-            a.RemoveChild(w);
+            _backgroundResource.RemoveChild(_selectorResource);
         }
 
         if (g1() != 9 && g1() != 4 && g1() != 11)
@@ -304,9 +305,9 @@ public class SelectionControlScene : ControlScene
             {
                 B[var1] = -1;
 
-                for (int var2 = 0; var2 < v.Length; ++var2)
+                for (int var2 = 0; var2 < _elementImgResource.Length; ++var2)
                 {
-                    if (F[var2] == var1)
+                    if (_elementSlots[var2] == var1)
                     {
                         B[var1] = var2;
                         break;
@@ -314,21 +315,21 @@ public class SelectionControlScene : ControlScene
                 }
             }
 
-            for (var1 = 0; var1 < v.Length; ++var1)
+            for (var1 = 0; var1 < _elementImgResource.Length; ++var1)
             {
-                v[var1].SetPosition(H[F[var1]], I[F[var1]]);
+                _elementImgResource[var1].SetPosition(_imgPosXUnselected[_elementSlots[var1]], _imgPosYUnselected[_elementSlots[var1]]);
             }
 
             C = -1;
             A = 0;
 
-            for (var1 = 0; var1 < H.Length; ++var1)
+            for (var1 = 0; var1 < _imgPosXUnselected.Length; ++var1)
             {
-                if (M[var1] == 0 && N[var1] == 0)
+                if (_orderY[var1] == 0 && _orderX[var1] == 0)
                 {
                     z = var1;
-                    w.SetPosition(K[z], L[z]);
-                    w.SetFlipMode(J[z]);
+                    _selectorResource.SetPosition(_selectorPosX[z], _selectorPosY[z]);
+                    _selectorResource.SetFlipMode(_selectorFlipMode[z]);
                     break;
                 }
             }
@@ -340,20 +341,20 @@ public class SelectionControlScene : ControlScene
     [FunctionName("e")]
     public override void e1()
     {
-        x.SetIsVisible(true);
-        if (x != null)
+        _screenResource.SetIsVisible(true);
+        if (_screenResource != null)
         {
-            x.AddChild(a, centerPosX, centerPosY);
-            x.a1(a, -2);
+            _screenResource.AddChild(_backgroundResource, centerPosX, centerPosY);
+            _screenResource.a1(_backgroundResource, -2);
 
-            for (int var1 = 0; var1 < v.Length; ++var1)
+            for (int var1 = 0; var1 < _elementImgResource.Length; ++var1)
             {
-                a.AddChild((ResourceBase)v[var1]);
+                _backgroundResource.AddChild((ResourceBase)_elementImgResource[var1]);
             }
 
             if (C != -1)
             {
-                a.AddChild((ResourceBase)v[C]);
+                _backgroundResource.AddChild((ResourceBase)_elementImgResource[C]);
             }
         }
 
@@ -361,74 +362,74 @@ public class SelectionControlScene : ControlScene
     }
 
     [FunctionName("f")]
-    public override void f1()
+    public override void ResetInternal()
     {
-        if (a != null)
+        if (_backgroundResource != null)
         {
-            a.d();
-            a = null;
+            _backgroundResource.Dispose();
+            _backgroundResource = null;
         }
 
         int var1;
-        if (v != null)
+        if (_elementImgResource != null)
         {
-            for (var1 = 0; var1 < v.Length; ++var1)
+            for (var1 = 0; var1 < _elementImgResource.Length; ++var1)
             {
-                v[var1].d();
+                _elementImgResource[var1].Dispose();
             }
 
-            v = null;
+            _elementImgResource = null;
         }
 
-        if (w != null)
+        if (_selectorResource != null)
         {
-            w.d();
-            w = null;
+            _selectorResource.Dispose();
+            _selectorResource = null;
         }
 
-        x = null;
+        _screenResource = null;
         B = null;
-        if (D != null)
+        if (_backgroundImg != null)
         {
-            D.Dispose();
-            D = null;
+            _backgroundImg.Dispose();
+            _backgroundImg = null;
         }
 
-        if (E != null)
+        if (_elementImages != null)
         {
-            for (var1 = 0; var1 < E.Length; ++var1)
+            for (var1 = 0; var1 < _elementImages.Length; ++var1)
             {
-                E[var1].Dispose();
+                _elementImages[var1].Dispose();
             }
 
-            E = null;
+            _elementImages = null;
         }
 
-        F = null;
-        G = null;
-        H = null;
-        I = null;
-        J = null;
-        K = null;
-        L = null;
-        M = null;
-        N = null;
-        O = null;
-        P = null;
+        _elementSlots = null;
+        _elementIds = null;
+        _imgPosXUnselected = null;
+        _imgPosYUnselected = null;
+        _selectorFlipMode = null;
+        _selectorPosX = null;
+        _selectorPosY = null;
+        _orderY = null;
+        _orderX = null;
+        _orderIds = null;
+        _solutions = null;
     }
 
     [FunctionName("a")]
-    private static bool a1(JavaString var0, int var1)
+    private static bool IsSolutionSlotEmpty(JavaString solution, int slot)
     {
-        int var2 = 0;
+        int currentSlot = 0;
 
-        for (int var3 = 0; var3 < var0.Length; ++var3)
+        for (int i = 0; i < solution.Length; ++i)
         {
-            if (var0[var3] == ',')
+            if (solution[i] == ',')
             {
-                if (var2 == var1)
+                if (currentSlot == slot)
                 {
-                    if (var0[var3 - 1] == '-')
+                    if (solution[i - 1] == '-')
                     {
                         return true;
                     }
@@ -436,11 +437,11 @@ public class SelectionControlScene : ControlScene
                     return false;
                 }
 
-                ++var2;
+                ++currentSlot;
             }
-            else if (var3 == var0.Length - 1 && var1 == var2 + 1)
+            else if (i == solution.Length - 1 && slot == currentSlot + 1)
             {
-                if (var0[var3] == '-')
+                if (solution[i] == '-')
                 {
                     return true;
                 }
@@ -459,50 +460,50 @@ public class SelectionControlScene : ControlScene
 
         try
         {
-            var0.ReadString(var1);
+            var0.ReadInt32(var1.BaseStream);
             int var4 = var0.ReadInt32(var1.BaseStream);
-            var2.D = var0.GetLoadedImage(var4);
+            var2._backgroundImg = var0.GetLoadedImage(var4);
             int var6 = var0.ReadInt32(var1.BaseStream);
             int var7 = var0.ReadInt32(var1.BaseStream);
             int var8 = var0.ReadInt32(var1.BaseStream);
-            var2.E = new Image[var6];
-            var2.F = new int[var6];
-            var2.G = new int[var6];
+            var2._elementImages = new Image[var6];
+            var2._elementSlots = new int[var6];
+            var2._elementIds = new int[var6];
 
             int var9;
             for (var9 = 0; var9 < var6; ++var9)
             {
-                var2.E[var9] = var0.GetLoadedImage(var0.ReadInt32(var1.BaseStream));
-                var2.F[var9] = var0.ReadInt32(var1.BaseStream);
-                var2.G[var9] = var0.ReadInt32(var1.BaseStream);
+                var2._elementImages[var9] = var0.GetLoadedImage(var0.ReadInt32(var1.BaseStream));
+                var2._elementSlots[var9] = var0.ReadInt32(var1.BaseStream);
+                var2._elementIds[var9] = var0.ReadInt32(var1.BaseStream);
             }
 
-            var2.H = new int[var7];
-            var2.I = new int[var7];
-            var2.J = new int[var7];
-            var2.K = new int[var7];
-            var2.L = new int[var7];
-            var2.M = new int[var7];
-            var2.N = new int[var7];
-            var2.O = new int[var7];
+            var2._imgPosXUnselected = new int[var7];
+            var2._imgPosYUnselected = new int[var7];
+            var2._selectorFlipMode = new int[var7];
+            var2._selectorPosX = new int[var7];
+            var2._selectorPosY = new int[var7];
+            var2._orderY = new int[var7];
+            var2._orderX = new int[var7];
+            var2._orderIds = new int[var7];
 
             for (var9 = 0; var9 < var7; ++var9)
             {
-                var2.H[var9] = var0.ReadInt32(var1.BaseStream);
-                var2.I[var9] = var0.ReadInt32(var1.BaseStream);
-                var2.J[var9] = var0.ReadInt32(var1.BaseStream);
-                var2.K[var9] = var0.ReadInt32(var1.BaseStream);
-                var2.L[var9] = var0.ReadInt32(var1.BaseStream);
-                var2.M[var9] = var0.ReadInt32(var1.BaseStream);
-                var2.N[var9] = var0.ReadInt32(var1.BaseStream);
-                var2.O[var9] = var0.ReadInt32(var1.BaseStream);
+                var2._imgPosXUnselected[var9] = var0.ReadInt32(var1.BaseStream);
+                var2._imgPosYUnselected[var9] = var0.ReadInt32(var1.BaseStream);
+                var2._selectorFlipMode[var9] = var0.ReadInt32(var1.BaseStream);
+                var2._selectorPosX[var9] = var0.ReadInt32(var1.BaseStream);
+                var2._selectorPosY[var9] = var0.ReadInt32(var1.BaseStream);
+                var2._orderY[var9] = var0.ReadInt32(var1.BaseStream);
+                var2._orderX[var9] = var0.ReadInt32(var1.BaseStream);
+                var2._orderIds[var9] = var0.ReadInt32(var1.BaseStream);
             }
 
-            var2.P = new JavaString[var8];
+            var2._solutions = new JavaString[var8];
 
             for (var9 = 0; var9 < var8; ++var9)
             {
-                var2.P[var9] = var0.ReadString(var1);
+                var2._solutions[var9] = var0.ReadString(var1);
             }
         }
         catch (Exception var10)

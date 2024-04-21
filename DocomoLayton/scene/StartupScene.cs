@@ -11,7 +11,7 @@ namespace DocomoLayton.scene;
 public class StartupScene : IScene
 {
     [MemberName("a")]
-    private int state;
+    private int _state;
     [MemberName("b")]
     private ResourceBase[] b = new ResourceBase[1];
     [MemberName("c")]
@@ -111,7 +111,7 @@ public class StartupScene : IScene
     [FunctionName("b")]
     private void SetState(int var1)
     {
-        state = var1;
+        _state = var1;
         j = 0;
     }
 
@@ -120,7 +120,7 @@ public class StartupScene : IScene
     {
         ScreenResource var2 = gameContext.ScreenResource;
         JavaString var3;
-        switch (state)
+        switch (_state)
         {
             case -2:
                 if (k > 0)
@@ -204,7 +204,7 @@ public class StartupScene : IScene
                         var2.AddChild(b[0], (240 - ((ImageResource)b[0]).GetWidth()) / 2, 0);
                         var2.ExecuteTransition(1);
                         SetState(0);
-                        a1(state);
+                        a1(_state);
                     }
                     else
                     {

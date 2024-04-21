@@ -321,13 +321,13 @@ public class SettingsScene : IScene
                     c2 = 3;
                     if (k == 0)
                     {
-                        d[9].SetPosition(d[9]._posX + 2, d[9]._posY + 2);
-                        d[10].SetPosition(d[10]._posX + 2, d[10]._posY + 2);
+                        d[9].SetPosition(d[9].posX + 2, d[9].posY + 2);
+                        d[10].SetPosition(d[10].posX + 2, d[10].posY + 2);
                     }
                     else
                     {
-                        d[11].SetPosition(d[11]._posX + 2, d[11]._posY + 2);
-                        d[12].SetPosition(d[12]._posX + 2, d[12]._posY + 2);
+                        d[11].SetPosition(d[11].posX + 2, d[11].posY + 2);
+                        d[12].SetPosition(d[12].posX + 2, d[12].posY + 2);
                     }
                 }
                 break;
@@ -352,10 +352,10 @@ public class SettingsScene : IScene
                 }
                 else
                 {
-                    d[17].SetPosition(d[17]._posX - 2, d[17]._posY - 2);
-                    d[18].SetPosition(d[18]._posX - 2, d[18]._posY - 2);
-                    d[11].SetPosition(d[11]._posX - 2, d[11]._posY - 2);
-                    d[12].SetPosition(d[12]._posX - 2, d[12]._posY - 2);
+                    d[17].SetPosition(d[17].posX - 2, d[17].posY - 2);
+                    d[18].SetPosition(d[18].posX - 2, d[18].posY - 2);
+                    d[11].SetPosition(d[11].posX - 2, d[11].posY - 2);
+                    d[12].SetPosition(d[12].posX - 2, d[12].posY - 2);
                     f.SetIsVisible(false);
                     d[8].SetIsVisible(false);
                     c2 = 1;
@@ -477,8 +477,8 @@ public class SettingsScene : IScene
         i = 2;
         j = 1;
         a1(j, i);
-        d[13].SetPosition(d[13]._posX + 2, d[13]._posY + 2);
-        d[14].SetPosition(d[14]._posX + 2, d[14]._posY + 2);
+        d[13].SetPosition(d[13].posX + 2, d[13].posY + 2);
+        d[14].SetPosition(d[14].posX + 2, d[14].posY + 2);
         AudioManager.b1(1, GameContext.FileManager.GetLoadedSound("se_004.mld"), 100, 0);
         c2 = 99;
         var1.ExecuteTransition(0);
@@ -496,8 +496,8 @@ public class SettingsScene : IScene
         d[19].SetPosition(103, 51);
         d[10].SetIsVisible(false);
         d[12].SetIsVisible(true);
-        d[17].SetPosition(d[17]._posX + 2, d[17]._posY + 2);
-        d[18].SetPosition(d[18]._posX + 2, d[18]._posY + 2);
+        d[17].SetPosition(d[17].posX + 2, d[17].posY + 2);
+        d[18].SetPosition(d[18].posX + 2, d[18].posY + 2);
         AudioManager.b1(1, GameContext.FileManager.GetLoadedSound("se_011.mld"), 100, 0);
         c2 = 2;
     }

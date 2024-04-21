@@ -325,11 +325,11 @@ public class IngameMenuScene : IScene
 
                         var3 = true;
                     }
-                    else if (f[1]._posX == 214)
+                    else if (f[1].posX == 214)
                     {
                         AudioManager.b1(1, GameContext.FileManager.GetLoadedSound("se_011.mld"), 100, 0);
-                        f[1].SetPosition(f[1]._posX + 2, f[1]._posY + 2);
-                        f[0].SetPosition(f[0]._posX + 2, f[0]._posY + 2);
+                        f[1].SetPosition(f[1].posX + 2, f[1].posY + 2);
+                        f[0].SetPosition(f[0].posX + 2, f[0].posY + 2);
                     }
                 }
 
@@ -364,7 +364,7 @@ public class IngameMenuScene : IScene
                     f[1].SetIsVisible(true);
                 }
 
-                if (f[1]._posX == 216)
+                if (f[1].posX == 216)
                 {
                     q += gameContext.d1();
                     if (q > 300)
@@ -372,8 +372,8 @@ public class IngameMenuScene : IScene
                         q = 0;
                         g[0].SetIsVisible(true);
                         a = 4;
-                        f[1].SetPosition(f[1]._posX - 2, f[1]._posY - 2);
-                        f[0].SetPosition(f[0]._posX - 2, f[0]._posY - 2);
+                        f[1].SetPosition(f[1].posX - 2, f[1].posY - 2);
+                        f[0].SetPosition(f[0].posX - 2, f[0].posY - 2);
                     }
                 }
 
@@ -512,13 +512,13 @@ public class IngameMenuScene : IScene
         {
             e2[2 + l * 3].SetIsVisible(false);
             e2[4 + l * 3].SetIsVisible(true);
-            e2[4 + l * 3].SetPosition(e2[4 + l * 3]._posX + 2, e2[4 + l * 3]._posY + 2);
+            e2[4 + l * 3].SetPosition(e2[4 + l * 3].posX + 2, e2[4 + l * 3].posY + 2);
         }
         else
         {
             e2[20].SetIsVisible(true);
-            e2[19].SetPosition(e2[19]._posX + 2, e2[19]._posY + 2);
-            e2[20].SetPosition(e2[20]._posX + 2, e2[20]._posY + 2);
+            e2[19].SetPosition(e2[19].posX + 2, e2[19].posY + 2);
+            e2[20].SetPosition(e2[20].posX + 2, e2[20].posY + 2);
             ((ImageResource)e2[19]).ClipRect(108, 0, 54, 31);
             ((ImageResource)e2[20]).ClipRect(162, 0, 54, 31);
         }
@@ -553,7 +553,7 @@ public class IngameMenuScene : IScene
 
             e2[14].SetIsVisible(false);
             e2[16].SetIsVisible(true);
-            e2[16].SetPosition(e2[16]._posX + 2, e2[16]._posY + 2);
+            e2[16].SetPosition(e2[16].posX + 2, e2[16].posY + 2);
         }
     }
 
@@ -578,12 +578,12 @@ public class IngameMenuScene : IScene
     private void d1(GameContext var1)
     {
         byte var2 = 0;
-        if (f[3]._posX == t[0][0] + 2)
+        if (f[3].posX == t[0][0] + 2)
         {
             var2 = 1;
         }
 
-        if (f[5]._posX == t[1][0] + 2)
+        if (f[5].posX == t[1][0] + 2)
         {
             var2 = 2;
         }

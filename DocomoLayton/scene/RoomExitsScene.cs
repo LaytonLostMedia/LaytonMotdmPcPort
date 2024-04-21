@@ -242,13 +242,13 @@ public class RoomExitsScene : IScene
                         a = 99;
                         var2.ExecuteTransition(0);
                         gameContext.SaveData.SetRoomId(gameContext.RoomData.GetRoomId(_exitIndex));
-                        AudioManager.b1(1, GameContext.FileManager.GetLoadedSound("se_011.mld"), 100);
+                        AudioManager.PlaySound(1, GameContext.FileManager.GetLoadedSound("se_011.mld"), 100);
                     }
                     else
                     {
                         c1();
                         gameContext.SetCurrentScene(scene.RoomScene.GetInstance());
-                        AudioManager.b1(1, GameContext.FileManager.GetLoadedSound("se_004.mld"), 100);
+                        AudioManager.PlaySound(1, GameContext.FileManager.GetLoadedSound("se_004.mld"), 100);
                     }
                 }
                 else if (gameContext.IsKeyPressed(Display.KEY_TWO))
@@ -257,14 +257,14 @@ public class RoomExitsScene : IScene
                     {
                         _exitIndex = j;
                         a = 98;
-                        AudioManager.b1(1, GameContext.FileManager.GetLoadedSound("se_004.mld"), 100);
+                        AudioManager.PlaySound(1, GameContext.FileManager.GetLoadedSound("se_004.mld"), 100);
                         c1();
                     }
                 }
                 else if (var3 != -1)
                 {
                     _exitIndex = var3;
-                    AudioManager.b1(1, GameContext.FileManager.GetLoadedSound("se_018.mld"), 100);
+                    AudioManager.PlaySound(1, GameContext.FileManager.GetLoadedSound("se_018.mld"), 100);
                 }
 
                 b1();
@@ -382,7 +382,7 @@ public class RoomExitsScene : IScene
     [FunctionName("c")]
     private void c1()
     {
-        b[j].SetPosition(b[j]._posX + 2, b[j]._posY + 2);
-        c.SetPosition(c._posX + 2, c._posY + 2);
+        b[j].SetPosition(b[j].posX + 2, b[j].posY + 2);
+        c.SetPosition(c.posX + 2, c.posY + 2);
     }
 }

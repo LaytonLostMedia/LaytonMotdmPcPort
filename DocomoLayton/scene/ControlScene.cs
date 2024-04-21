@@ -103,7 +103,7 @@ public abstract class ControlScene : IScene
     public static int m;
 
     [MemberName("X")]
-    private int X;
+    private int _hintCoins;
     [MemberName("Y")]
     private int Y;
     [MemberName("Z")]
@@ -186,13 +186,13 @@ public abstract class ControlScene : IScene
     public abstract void e1();
 
     [FunctionName("f")]
-    public abstract void f1();
+    public abstract void ResetInternal();
 
     [FunctionName("a")]
     public abstract int a1(GameContext var1, object[] var2);
 
     [FunctionName("d")]
-    public abstract void d1(GameContext var1);
+    public abstract void UpdateInternal(GameContext var1);
 
     [FunctionName("b")]
     private static int b1(int var0, int var1)
@@ -217,7 +217,7 @@ public abstract class ControlScene : IScene
         }
         else if (var2.b1(var1))
         {
-            AudioManager.b1(1, n[8], 100);
+            AudioManager.PlaySound(1, n[8], 100);
         }
 
         var2.c1();
@@ -234,7 +234,7 @@ public abstract class ControlScene : IScene
         }
         else if (var2.a1(var1))
         {
-            AudioManager.b1(1, n[8], 100);
+            AudioManager.PlaySound(1, n[8], 100);
         }
 
         var2.c1();
@@ -242,7 +242,7 @@ public abstract class ControlScene : IScene
     }
 
     [FunctionName("e")]
-    protected JavaString e1(GameContext var1)
+    protected JavaString GetPressedButtonCaption(GameContext var1)
     {
         if (A == 0)
         {
@@ -289,7 +289,7 @@ public abstract class ControlScene : IScene
             JavaString var2;
             if ((var2 = c1(var1, L)).Equals("return"))
             {
-                AudioManager.b1(1, n[2], 100);
+                AudioManager.PlaySound(1, n[2], 100);
                 A = 5;
                 var2 = "pre_return";
                 d1();
@@ -304,12 +304,12 @@ public abstract class ControlScene : IScene
             }
             else if (var2.Equals("reset"))
             {
-                AudioManager.b1(1, n[2], 100);
+                AudioManager.PlaySound(1, n[2], 100);
                 z = 5;
             }
             else if (var2.Equals("answer"))
             {
-                AudioManager.b1(1, n[1], 100);
+                AudioManager.PlaySound(1, n[1], 100);
                 z = 5;
             }
 
@@ -363,7 +363,7 @@ public abstract class ControlScene : IScene
         ScreenResource var2 = gameContext.ScreenResource;
         _questionId = g._intValues[0];
         a1(gameContext, _questionId);
-        X = gameContext.SaveData.c1();
+        _hintCoins = gameContext.SaveData.c1();
         Y = gameContext.SaveData.b1();
         gameContext.RoomData.SetQuestionBit(_questionId, 1);
         centerPosX = (240 - width) / 2;
@@ -452,7 +452,7 @@ public abstract class ControlScene : IScene
             J = null;
         }
 
-        f1();
+        ResetInternal();
         if (x != null)
         {
             x = null;
@@ -521,7 +521,7 @@ public abstract class ControlScene : IScene
             {
                 if (u[0][var2] != null)
                 {
-                    u[0][var2].d();
+                    u[0][var2].Dispose();
                     u[0][var2] = null;
                 }
             }
@@ -532,7 +532,7 @@ public abstract class ControlScene : IScene
             {
                 if (u[1][var2] != null)
                 {
-                    u[1][var2].d();
+                    u[1][var2].Dispose();
                     u[1][var2] = null;
                 }
             }
@@ -543,7 +543,7 @@ public abstract class ControlScene : IScene
             {
                 if (u[2][var2] != null)
                 {
-                    u[2][var2].d();
+                    u[2][var2].Dispose();
                     u[2][var2] = null;
                 }
             }
@@ -681,7 +681,7 @@ public abstract class ControlScene : IScene
                 {
                     this.O.g1();
                     ((KeyboardResource)this.J.a1(this.J.e - 1).k[3]).a1(this.GetPikarat().ToString());
-                    ((KeyboardResource)this.J.a1(this.J.e - 1).k[4]).a1(this.X);
+                    ((KeyboardResource)this.J.a1(this.J.e - 1).k[4]).a1(this._hintCoins);
                 }
                 else if (this.J.c1())
                 {
@@ -694,7 +694,7 @@ public abstract class ControlScene : IScene
                             {
                                 if (this._pikaratAmounts[_failCount - 1] == this._pikarat)
                                 {
-                                    AudioManager.b1(1, this.n[3], 100);
+                                    AudioManager.PlaySound(1, this.n[3], 100);
                                     this.D = 2;
                                 }
 
@@ -706,7 +706,7 @@ public abstract class ControlScene : IScene
                                 this._pikarat = this.GetPikarat();
                                 if (this.D <= 0)
                                 {
-                                    AudioManager.a1(1);
+                                    AudioManager.StopSound(1);
                                 }
 
                                 --this.D;
@@ -723,7 +723,7 @@ public abstract class ControlScene : IScene
                         {
                             var3.y = 1;
                             l = _failCount;
-                            AudioManager.a1(1);
+                            AudioManager.StopSound(1);
                             AudioManager.a1(0, this.n[0], 100);
                         }
                     }
@@ -734,7 +734,7 @@ public abstract class ControlScene : IScene
                         {
                             if (this.am)
                             {
-                                AudioManager.b1(1, this.n[1], 100);
+                                AudioManager.PlaySound(1, this.n[1], 100);
                                 this.am = false;
                             }
 
@@ -804,28 +804,28 @@ public abstract class ControlScene : IScene
                     {
                         if (var6.Equals("hint"))
                         {
-                            AudioManager.b1(1, this.n[1], 100);
+                            AudioManager.PlaySound(1, this.n[1], 100);
                             this.b1(var1, true);
                         }
                         else if (var6.Equals("answer"))
                         {
                             this.ap = 5;
-                            AudioManager.b1(1, this.n[1], 100);
+                            AudioManager.PlaySound(1, this.n[1], 100);
                         }
                         else if (var6.Equals("giveup"))
                         {
-                            AudioManager.b1(1, this.n[1], 100);
+                            AudioManager.PlaySound(1, this.n[1], 100);
                             var2.ExecuteTransition(0);
                             this.b1(3);
                         }
                         else if (var6.Equals("question"))
                         {
-                            AudioManager.b1(1, this.n[1], 100);
+                            AudioManager.PlaySound(1, this.n[1], 100);
                             this.b1(0);
                             this.J.b1();
                             this.J.a2 = this.J.e - 1;
                             this.am = true;
-                            ((KeyboardResource)this.J.a1(this.J.a2).k[4]).a1(this.X);
+                            ((KeyboardResource)this.J.a1(this.J.a2).k[4]).a1(this._hintCoins);
                             this.J.f1();
                             var2.ExecuteTransition(0);
                             this.ao = 1;
@@ -854,13 +854,13 @@ public abstract class ControlScene : IScene
                     }
                     else if (var2._transitionState != 3)
                     {
-                        this.d1(var1);
+                        this.UpdateInternal(var1);
 
                         for (var7 = this.w; var7 < this.v.Length; ++var7)
                         {
                             if (this.v[var7].b1(var1))
                             {
-                                AudioManager.b1(1, this.n[8], 100);
+                                AudioManager.PlaySound(1, this.n[8], 100);
                             }
 
                             this.v[var7].c1();
@@ -889,13 +889,13 @@ public abstract class ControlScene : IScene
                     {
                         if (var6.Equals("yes"))
                         {
-                            AudioManager.b1(1, this.n[1], 100);
+                            AudioManager.PlaySound(1, this.n[1], 100);
                             this.c1(var1, false);
                             this.c1();
                         }
                         else if (var6.Equals("no"))
                         {
-                            AudioManager.b1(1, this.n[2], 100);
+                            AudioManager.PlaySound(1, this.n[2], 100);
                             this.b1(1);
                             this.ap = -1;
                             this.P.b1();
@@ -925,11 +925,11 @@ public abstract class ControlScene : IScene
                         {
                             if (this.U == 0)
                             {
-                                AudioManager.b1(1, this.n[b1(11, 3)], 100);
+                                AudioManager.PlaySound(1, this.n[b1(11, 3)], 100);
                             }
                             else
                             {
-                                AudioManager.b1(1, this.n[b1(20, 3)], 100);
+                                AudioManager.PlaySound(1, this.n[b1(20, 3)], 100);
                             }
                         }
 
@@ -946,25 +946,25 @@ public abstract class ControlScene : IScene
                                     break;
                                 case 2:
                                     AudioManager.a1(0, 100);
-                                    AudioManager.a1(0);
+                                    AudioManager.StopSound(0);
                                     break;
                             }
                         }
 
                         if (this.a1(1))
                         {
-                            AudioManager.b1(3, this.n[4], 100);
+                            AudioManager.PlaySound(3, this.n[4], 100);
                         }
 
                         if (this.a1(5))
                         {
                             if (this.y == 0)
                             {
-                                AudioManager.b1(1, this.n[5], 100);
+                                AudioManager.PlaySound(1, this.n[5], 100);
                             }
                             else if (this.y == 1)
                             {
-                                AudioManager.b1(1, this.n[6], 100);
+                                AudioManager.PlaySound(1, this.n[6], 100);
                             }
                         }
 
@@ -974,22 +974,22 @@ public abstract class ControlScene : IScene
                             {
                                 if (this.U == 0)
                                 {
-                                    AudioManager.b1(2, this.n[b1(14, 3)], 100);
+                                    AudioManager.PlaySound(2, this.n[b1(14, 3)], 100);
                                 }
                                 else
                                 {
-                                    AudioManager.b1(2, this.n[b1(23, 3)], 100);
+                                    AudioManager.PlaySound(2, this.n[b1(23, 3)], 100);
                                 }
                             }
                             else if (this.y == 1)
                             {
                                 if (this.U == 0)
                                 {
-                                    AudioManager.b1(2, this.n[b1(17, 3)], 100);
+                                    AudioManager.PlaySound(2, this.n[b1(17, 3)], 100);
                                 }
                                 else
                                 {
-                                    AudioManager.b1(2, this.n[b1(26, 3)], 100);
+                                    AudioManager.PlaySound(2, this.n[b1(26, 3)], 100);
                                 }
                             }
                         }
@@ -1015,7 +1015,7 @@ public abstract class ControlScene : IScene
 
                             if (this.y == 0)
                             {
-                                ((KeyboardResource)this.K[this.y].a1(this.K[this.y].e - 2).k[3]).a1(this.X.ToString());
+                                ((KeyboardResource)this.K[this.y].a1(this.K[this.y].e - 2).k[3]).a1(this._hintCoins.ToString());
                             }
 
                             this.K[this.y].f1();
@@ -1038,11 +1038,11 @@ public abstract class ControlScene : IScene
                 {
                     if (this.U == 0)
                     {
-                        AudioManager.b1(1, this.n[b1(11, 3)], 100);
+                        AudioManager.PlaySound(1, this.n[b1(11, 3)], 100);
                     }
                     else
                     {
-                        AudioManager.b1(1, this.n[b1(20, 3)], 100);
+                        AudioManager.PlaySound(1, this.n[b1(20, 3)], 100);
                     }
                 }
 
@@ -1059,25 +1059,25 @@ public abstract class ControlScene : IScene
                             break;
                         case 2:
                             AudioManager.a1(0, 100);
-                            AudioManager.a1(0);
+                            AudioManager.StopSound(0);
                             break;
                     }
                 }
 
                 if (this.a1(1))
                 {
-                    AudioManager.b1(3, this.n[4], 100);
+                    AudioManager.PlaySound(3, this.n[4], 100);
                 }
 
                 if (this.a1(5))
                 {
                     if (this.y == 0)
                     {
-                        AudioManager.b1(1, this.n[5], 100);
+                        AudioManager.PlaySound(1, this.n[5], 100);
                     }
                     else if (this.y == 1)
                     {
-                        AudioManager.b1(1, this.n[6], 100);
+                        AudioManager.PlaySound(1, this.n[6], 100);
                     }
                 }
 
@@ -1087,22 +1087,22 @@ public abstract class ControlScene : IScene
                     {
                         if (this.U == 0)
                         {
-                            AudioManager.b1(2, this.n[b1(14, 3)], 100);
+                            AudioManager.PlaySound(2, this.n[b1(14, 3)], 100);
                         }
                         else
                         {
-                            AudioManager.b1(2, this.n[b1(23, 3)], 100);
+                            AudioManager.PlaySound(2, this.n[b1(23, 3)], 100);
                         }
                     }
                     else if (this.y == 1)
                     {
                         if (this.U == 0)
                         {
-                            AudioManager.b1(2, this.n[b1(17, 3)], 100);
+                            AudioManager.PlaySound(2, this.n[b1(17, 3)], 100);
                         }
                         else
                         {
-                            AudioManager.b1(2, this.n[b1(26, 3)], 100);
+                            AudioManager.PlaySound(2, this.n[b1(26, 3)], 100);
                         }
                     }
                 }
@@ -1124,7 +1124,7 @@ public abstract class ControlScene : IScene
                                 ((KeyboardResource)var3.k[2]).a1((this.Y + this._pikarat).ToString());
                                 if (this._pikarat == 0)
                                 {
-                                    AudioManager.b1(2, this.n[3], 100);
+                                    AudioManager.PlaySound(2, this.n[3], 100);
                                 }
 
                                 var4 = this.GetPikarat();
@@ -1156,17 +1156,17 @@ public abstract class ControlScene : IScene
                                 if (this.GetPikarat() - this._pikarat <= 0)
                                 {
                                     this._pikarat = this.GetPikarat();
-                                    AudioManager.a1(2);
+                                    AudioManager.StopSound(2);
                                 }
                             }
                             else
                             {
-                                AudioManager.a1(2);
+                                AudioManager.StopSound(2);
                             }
 
                             if (var1.IsKeyPressed(1048576) && this.GetPikarat() - this._pikarat == 0)
                             {
-                                AudioManager.a1(2);
+                                AudioManager.StopSound(2);
                                 if (!_isSolved && this.y == 0)
                                 {
                                     AudioManager.a1(0, this.n[0], 100);
@@ -1188,7 +1188,7 @@ public abstract class ControlScene : IScene
 
                                 if (this.am)
                                 {
-                                    AudioManager.b1(1, this.n[1], 100);
+                                    AudioManager.PlaySound(1, this.n[1], 100);
                                     this.am = false;
                                 }
                             }
@@ -1251,14 +1251,14 @@ public abstract class ControlScene : IScene
                     {
                         if (var6.Equals("image"))
                         {
-                            AudioManager.b1(1, this.n[1], 100);
+                            AudioManager.PlaySound(1, this.n[1], 100);
                             var2.ExecuteTransition(0);
                             this.am = true;
                             this.K[this.y].a2 = this.K[this.y].e - 1;
                         }
                         else if (var6.Equals("exit"))
                         {
-                            AudioManager.b1(1, this.n[1], 100);
+                            AudioManager.PlaySound(1, this.n[1], 100);
                             this.c1(var1, true);
                         }
 
@@ -1292,17 +1292,17 @@ public abstract class ControlScene : IScene
                     {
                         if (var6.Equals("retry"))
                         {
-                            AudioManager.b1(1, this.n[1], 100);
+                            AudioManager.PlaySound(1, this.n[1], 100);
                             this.h1(var1);
                         }
                         else if (var6.Equals("hint"))
                         {
-                            AudioManager.b1(1, this.n[1], 100);
+                            AudioManager.PlaySound(1, this.n[1], 100);
                             this.b1(var1, true);
                         }
                         else if (var6.Equals("giveup"))
                         {
-                            AudioManager.b1(1, this.n[1], 100);
+                            AudioManager.PlaySound(1, this.n[1], 100);
                             this.c1(var1, false);
                         }
                     }
@@ -1388,7 +1388,7 @@ public abstract class ControlScene : IScene
                     }
                     else if (var6.Equals("lock"))
                     {
-                        AudioManager.b1(1, this.n[8], 100);
+                        AudioManager.PlaySound(1, this.n[8], 100);
                         this.R.a2 = 0;
                         this.R.e1();
                         this.R.f1();
@@ -1404,7 +1404,7 @@ public abstract class ControlScene : IScene
                     {
                         if (var6.Equals("ret"))
                         {
-                            AudioManager.b1(1, this.n[2], 100);
+                            AudioManager.PlaySound(1, this.n[2], 100);
                             if (1 == this.H)
                             {
                                 var2.ExecuteTransition(0);
@@ -1432,14 +1432,14 @@ public abstract class ControlScene : IScene
                 {
                     if (var6.Equals("yes"))
                     {
-                        AudioManager.b1(1, this.n[29], 100);
+                        AudioManager.PlaySound(1, this.n[29], 100);
                         ++_hintCount;
-                        --this.X;
+                        --this._hintCoins;
                         this.b1(var1, false);
                     }
                     else if (var6.Equals("no"))
                     {
-                        AudioManager.b1(1, this.n[2], 100);
+                        AudioManager.PlaySound(1, this.n[2], 100);
                     }
 
                     this.Q.a1(this.f);
@@ -1861,7 +1861,7 @@ public abstract class ControlScene : IScene
     private KeyboardResource c1(int var1)
     {
         KeyboardResource var2 = null;
-        int var3 = X;
+        int var3 = _hintCoins;
         switch (var1)
         {
             case 0:
@@ -1897,9 +1897,9 @@ public abstract class ControlScene : IScene
             v[var2].b1();
         }
 
-        t[0].j();
-        t[1].j();
-        t[2].j();
+        t[0].Reset();
+        t[1].Reset();
+        t[2].Reset();
         if (Q != null)
         {
             Q.b1();
@@ -1912,8 +1912,8 @@ public abstract class ControlScene : IScene
 
         J.f1();
         b1(0);
-        AudioManager.a1(0);
-        AudioManager.b1(1, n[9], 100);
+        AudioManager.StopSound(0);
+        AudioManager.PlaySound(1, n[9], 100);
         am = false;
         W = _isSolved;
         var1.b1(3);
@@ -2089,7 +2089,7 @@ public abstract class ControlScene : IScene
         switch (var19)
         {
             case 0:
-                if (X <= 0)
+                if (_hintCoins <= 0)
                 {
                     Q.a1(var14[0], var14[0], var14[0], 0, 0, 2, s[25], s[26], 0, 0, "medal");
                 }
@@ -2103,7 +2103,7 @@ public abstract class ControlScene : IScene
                 Q.a1(var17, var17, var17, 0, 0, 2, s[27], s[28], 1, 0, "ret");
                 break;
             case 1:
-                if (X <= 0)
+                if (_hintCoins <= 0)
                 {
                     Q.a1(var14[1], var14[1], var14[1], 0, 0, 2, s[25] + var6, s[26], 1, 0, "medal");
                 }
@@ -2118,7 +2118,7 @@ public abstract class ControlScene : IScene
                 Q.a1(var17, var17, var17, 0, 0, 2, s[27], s[28], 2, 0, "ret");
                 break;
             case 2:
-                if (X <= 0)
+                if (_hintCoins <= 0)
                 {
                     Q.a1(var14[2], var14[2], var14[2], 0, 0, 2, s[25] + var6 * 2, s[26], 2, 0, "medal");
                 }
@@ -2200,7 +2200,7 @@ public abstract class ControlScene : IScene
         }
 
         f1(var1);
-        var1.SaveData.b1(X);
+        var1.SaveData.b1(_hintCoins);
         var1.ScreenResource.ExecuteTransition(0);
         var1.ScreenResource.MarkVisible();
         ao = 1;

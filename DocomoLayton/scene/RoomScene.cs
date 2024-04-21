@@ -282,7 +282,7 @@ public class RoomScene : IScene
                     }
                     else
                     {
-                        AudioManager.b1(1, GameContext.FileManager.GetLoadedSound("se_018.mld"), 100);
+                        AudioManager.PlaySound(1, GameContext.FileManager.GetLoadedSound("se_018.mld"), 100);
                     }
                 }
                 else if (gameContext.IsKeyPressed(Display.KEY_RIGHT))
@@ -300,21 +300,21 @@ public class RoomScene : IScene
                     }
                     else
                     {
-                        AudioManager.b1(1, GameContext.FileManager.GetLoadedSound("se_018.mld"), 100);
+                        AudioManager.PlaySound(1, GameContext.FileManager.GetLoadedSound("se_018.mld"), 100);
                     }
                 }
                 else if (gameContext.IsKeyPressed(Display.KEY_MAIN))
                 {
                     _state = 2;
                     UpdateButtonStates(1);
-                    AudioManager.b1(1, GameContext.FileManager.GetLoadedSound("se_011.mld"), 100);
+                    AudioManager.PlaySound(1, GameContext.FileManager.GetLoadedSound("se_011.mld"), 100);
                 }
                 else if (gameContext.IsKeyPressed(Display.KEY_ONE))
                 {
                     _selectedButton = 0;
                     _state = 2;
                     UpdateButtonStates(1);
-                    AudioManager.b1(1, GameContext.FileManager.GetLoadedSound("se_011.mld"), 100);
+                    AudioManager.PlaySound(1, GameContext.FileManager.GetLoadedSound("se_011.mld"), 100);
                 }
                 else if (gameContext.IsKeyPressed(Display.KEY_TWO))
                 {
@@ -323,7 +323,7 @@ public class RoomScene : IScene
                         _selectedButton = 1;
                         _state = 2;
                         UpdateButtonStates(1);
-                        AudioManager.b1(1, GameContext.FileManager.GetLoadedSound("se_011.mld"), 100);
+                        AudioManager.PlaySound(1, GameContext.FileManager.GetLoadedSound("se_011.mld"), 100);
                     }
                 }
                 else if (gameContext.IsKeyPressed(Display.KEY_THREE))
@@ -331,14 +331,14 @@ public class RoomScene : IScene
                     _selectedButton = 2;
                     _state = 2;
                     UpdateButtonStates(1);
-                    AudioManager.b1(1, GameContext.FileManager.GetLoadedSound("se_011.mld"), 100);
+                    AudioManager.PlaySound(1, GameContext.FileManager.GetLoadedSound("se_011.mld"), 100);
                 }
                 else if (gameContext.IsKeyPressed(Display.KEY_FOUR))
                 {
                     _selectedButton = 3;
                     _state = 2;
                     UpdateButtonStates(1);
-                    AudioManager.b1(1, GameContext.FileManager.GetLoadedSound("se_011.mld"), 100);
+                    AudioManager.PlaySound(1, GameContext.FileManager.GetLoadedSound("se_011.mld"), 100);
                 }
                 break;
             case 99:
@@ -432,8 +432,8 @@ public class RoomScene : IScene
             _resources[2 + _selectedButton * 3].SetIsVisible(true);
         }
 
-        var2 = _resources[1 + _selectedButton * 3]._posX - 12;
-        int var3 = _resources[1 + _selectedButton * 3]._posY + 8;
+        var2 = _resources[1 + _selectedButton * 3].posX - 12;
+        int var3 = _resources[1 + _selectedButton * 3].posY + 8;
         ((ImageResource)_cursorResource).SetFlipMode(Graphics.FLIP_ROTATE_RIGHT);
         _cursorResource.SetPosition(var2, var3);
         GameContext.a1((ImageResource)_cursorResource, var2, var3, j);

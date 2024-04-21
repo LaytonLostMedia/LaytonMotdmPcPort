@@ -401,13 +401,13 @@ public class EventScene : IScene
 
                         if (scriptExecutor.Identifier.Equals("Shake"))
                         {
-                            D = _upCursorResource2._posX;
-                            E = _upCursorResource2._posY;
+                            D = _upCursorResource2.posX;
+                            E = _upCursorResource2.posY;
                             ad = true;
                             if ((var3 = b1(scriptExecutor.CmdMetadata)) >= 0)
                             {
-                                F = U[var3]._posX;
-                                G = U[var3]._posY;
+                                F = U[var3].posX;
+                                G = U[var3].posY;
                                 ae = true;
                             }
 
@@ -417,8 +417,8 @@ public class EventScene : IScene
 
                         if (scriptExecutor.Identifier.Equals("ShakeBG"))
                         {
-                            D = _upCursorResource2._posX;
-                            E = _upCursorResource2._posY;
+                            D = _upCursorResource2.posX;
+                            E = _upCursorResource2.posY;
                             ad = true;
                             ac = scriptExecutor.FrameCounter;
                             SetState(6);
@@ -428,8 +428,8 @@ public class EventScene : IScene
                         {
                             if ((var3 = b1(scriptExecutor.CmdMetadata)) >= 0)
                             {
-                                F = U[var3]._posX;
-                                G = U[var3]._posY;
+                                F = U[var3].posX;
+                                G = U[var3].posY;
                                 ae = true;
                             }
 
@@ -444,8 +444,8 @@ public class EventScene : IScene
 
                             for (var3 = 0; var3 < _animatedImageCount; ++var3)
                             {
-                                H[var3] = U[var3]._posX;
-                                I[var3] = U[var3]._posY;
+                                H[var3] = U[var3].posX;
+                                I[var3] = U[var3].posY;
                             }
 
                             ac = scriptExecutor.FrameCounter;
@@ -660,13 +660,13 @@ public class EventScene : IScene
                             }
                             else
                             {
-                                AudioManager.b1(scriptExecutor.y, GameContext.FileManager.GetLoadedSound(scriptExecutor.SoundFile), 100);
+                                AudioManager.PlaySound(scriptExecutor.y, GameContext.FileManager.GetLoadedSound(scriptExecutor.SoundFile), 100);
                             }
                         }
 
                         if (scriptExecutor.Identifier.Equals("StopSound"))
                         {
-                            AudioManager.a1(scriptExecutor.y);
+                            AudioManager.StopSound(scriptExecutor.y);
                         }
 
                         if (scriptExecutor.Identifier.Equals("PlayRSound"))
@@ -677,7 +677,7 @@ public class EventScene : IScene
                             }
                             else
                             {
-                                AudioManager.b1(scriptExecutor.y, _scriptResourceFileManager.GetLoadedSound(scriptExecutor.SoundFile), 100);
+                                AudioManager.PlaySound(scriptExecutor.y, _scriptResourceFileManager.GetLoadedSound(scriptExecutor.SoundFile), 100);
                             }
                         }
 
@@ -882,7 +882,7 @@ public class EventScene : IScene
                                 ((AnimatedImageResource)U[var3]).SetAnimationBehaviour(257);
                             }
 
-                            AudioManager.b1(2, GameContext.FileManager.GetLoadedSound("se_041.mld"), 100);
+                            AudioManager.PlaySound(2, GameContext.FileManager.GetLoadedSound("se_041.mld"), 100);
                         }
 
                         _textContinueMarkerResource.SetIsVisible(false);
@@ -935,7 +935,7 @@ public class EventScene : IScene
                                 ((AnimatedImageResource)U[var4]).SetLastAnimationStep();
                             }
 
-                            AudioManager.a1(2);
+                            AudioManager.StopSound(2);
                         }
 
                         if (!_textContinueMarkerResource.IsVisible())
@@ -980,7 +980,7 @@ public class EventScene : IScene
                             ((AnimatedImageResource)U[Y]).SetAnimationBehaviour(257);
                         }
 
-                        AudioManager.b1(3, _scriptResourceFileManager.GetLoadedSound(var11), 100);
+                        AudioManager.PlaySound(3, _scriptResourceFileManager.GetLoadedSound(var11), 100);
                         _scriptText.d();
                         W = true;
                         Z = int.Parse(var10[2]);
@@ -1003,7 +1003,7 @@ public class EventScene : IScene
                             ((AnimatedImageResource)U[var5]).SetLastAnimationStep();
                         }
 
-                        AudioManager.a1(2);
+                        AudioManager.StopSound(2);
                     }
 
                     if (!_textContinueMarkerResource.IsVisible())
@@ -1031,7 +1031,7 @@ public class EventScene : IScene
                                 }
                             }
 
-                            AudioManager.b1(2, GameContext.FileManager.GetLoadedSound("se_041.mld"), 100);
+                            AudioManager.PlaySound(2, GameContext.FileManager.GetLoadedSound("se_041.mld"), 100);
                         }
 
                         _textContinueMarkerResource.ExecuteTransition(0);
@@ -1082,11 +1082,11 @@ public class EventScene : IScene
                 {
                     if (K == 11)
                     {
-                        AudioManager.b1(2, _defaultFileManager.GetLoadedSound("se_034.mld"), 100);
+                        AudioManager.PlaySound(2, _defaultFileManager.GetLoadedSound("se_034.mld"), 100);
                     }
                     else
                     {
-                        AudioManager.b1(2, GameContext.FileManager.GetLoadedSound("se_011.mld"), 100);
+                        AudioManager.PlaySound(2, GameContext.FileManager.GetLoadedSound("se_011.mld"), 100);
                     }
 
                     SetState(22);
@@ -1117,22 +1117,22 @@ public class EventScene : IScene
                     {
                         if (gameContext.IsKeyPressed(Display.KEY_MAIN))
                         {
-                            if (_rightCursorResource._posX == 15)
+                            if (_rightCursorResource.posX == 15)
                             {
                                 AudioManager.b1(1, GameContext.FileManager.GetLoadedSound("se_011.mld"), 100, 0);
                                 var2.ExecuteTransition(0);
-                                _yesSelectedBtnResources[0].SetPosition(_yesSelectedBtnResources[0]._posX + 2, _yesSelectedBtnResources[0]._posY + 2);
+                                _yesSelectedBtnResources[0].SetPosition(_yesSelectedBtnResources[0].posX + 2, _yesSelectedBtnResources[0].posY + 2);
                             }
                             else
                             {
                                 AudioManager.b1(1, GameContext.FileManager.GetLoadedSound("se_004.mld"), 100, 0);
                                 SetState(21);
-                                _yesSelectedBtnResources[1].SetPosition(_yesSelectedBtnResources[1]._posX + 2, _yesSelectedBtnResources[1]._posY + 2);
+                                _yesSelectedBtnResources[1].SetPosition(_yesSelectedBtnResources[1].posX + 2, _yesSelectedBtnResources[1].posY + 2);
                             }
                         }
                         else if (gameContext.IsKeyPressed(Display.KEY_LEFT))
                         {
-                            if (_rightCursorResource._posX != 15)
+                            if (_rightCursorResource.posX != 15)
                             {
                                 AudioManager.b1(1, GameContext.FileManager.GetLoadedSound("se_018.mld"), 100, 0);
                             }
@@ -1143,7 +1143,7 @@ public class EventScene : IScene
                         }
                         else if (gameContext.IsKeyPressed(Display.KEY_RIGHT))
                         {
-                            if (_rightCursorResource._posX != 105)
+                            if (_rightCursorResource.posX != 105)
                             {
                                 AudioManager.b1(1, GameContext.FileManager.GetLoadedSound("se_018.mld"), 100, 0);
                             }
@@ -1647,14 +1647,14 @@ public class EventScene : IScene
         {
             if (var1.IsKeyPressed(Display.KEY_MAIN))
             {
-                AudioManager.b1(1, GameContext.FileManager.GetLoadedSound("se_011.mld"), 100);
+                AudioManager.PlaySound(1, GameContext.FileManager.GetLoadedSound("se_011.mld"), 100);
                 var1.RoomData.C1(J);
                 var1.RoomData.D1(J);
                 var1.ScreenResource.ExecuteTransition(0);
             }
             else if (var1.IsKeyPressed(Display.KEY_UP))
             {
-                AudioManager.b1(1, GameContext.FileManager.GetLoadedSound("se_018.mld"), 100);
+                AudioManager.PlaySound(1, GameContext.FileManager.GetLoadedSound("se_018.mld"), 100);
                 --J;
                 if (J < 0)
                 {
@@ -1665,7 +1665,7 @@ public class EventScene : IScene
             }
             else if (var1.IsKeyPressed(Display.KEY_DOWN))
             {
-                AudioManager.b1(1, GameContext.FileManager.GetLoadedSound("se_018.mld"), 100);
+                AudioManager.PlaySound(1, GameContext.FileManager.GetLoadedSound("se_018.mld"), 100);
                 ++J;
                 if (J >= scriptExecutor.LoadFileCount)
                 {

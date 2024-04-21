@@ -8,7 +8,7 @@ using DocomoLayton.game.Resources;
 
 namespace DocomoLayton.scene;
 
-[ClassName("scene","o")]
+[ClassName("scene", "o")]
 public class MinigameScene : IScene
 {
     [MemberName("a")]
@@ -494,7 +494,7 @@ public class MinigameScene : IScene
             i[9].AddChild(h[7], 122, 110);
             i[9].AddChild(i[3], (240 - i[3].GetWidth()) / 2, 72);
             i[9].AddChild(i[4], (240 - i[4].GetWidth()) / 2, 85);
-            h[7]._posX = F[1];
+            h[7].posX = F[1];
             i[9].SetIsVisible(false);
             a1(gameContext, true);
             h[23] = RectangleResource.Create(240, 192, 1, 255, 255, 255, 0);
@@ -617,27 +617,27 @@ public class MinigameScene : IScene
                 g[var3 + 108].SetPosition(var1 * 19 + 25 + 4, var2 * 19 + 18 + 4);
                 if (L == 3)
                 {
-                    f[var3]._posX = 220;
-                    g[var3]._posX = 220;
-                    g[var3 + 36]._posX = 220;
-                    g[var3 + 72]._posX = 220;
-                    g[var3 + 108]._posX = 220;
+                    f[var3].posX = 220;
+                    g[var3].posX = 220;
+                    g[var3 + 36].posX = 220;
+                    g[var3 + 72].posX = 220;
+                    g[var3 + 108].posX = 220;
                 }
                 else if (L == 1)
                 {
-                    f[var3]._posX = 18;
-                    g[var3]._posX = 18;
-                    g[var3 + 36]._posX = 18;
-                    g[var3 + 72]._posX = 18;
-                    g[var3 + 108]._posX = 18;
+                    f[var3].posX = 18;
+                    g[var3].posX = 18;
+                    g[var3 + 36].posX = 18;
+                    g[var3 + 72].posX = 18;
+                    g[var3 + 108].posX = 18;
                 }
                 else if (L == 2)
                 {
-                    f[var3]._posY = 13;
-                    g[var3]._posY = 13;
-                    g[var3 + 36]._posY = 13;
-                    g[var3 + 72]._posY = 13;
-                    g[var3 + 108]._posY = 13;
+                    f[var3].posY = 13;
+                    g[var3].posY = 13;
+                    g[var3 + 36].posY = 13;
+                    g[var3 + 72].posY = 13;
+                    g[var3 + 108].posY = 13;
                 }
             }
 
@@ -1207,7 +1207,7 @@ public class MinigameScene : IScene
                                     }
 
                                     j1();
-                                    h[24].a1(ai[Y], h[24]._posY, 5);
+                                    h[24].a1(ai[Y], h[24].posY, 5);
                                 }
 
                                 if (gameContext.IsKeyPressed(Display.KEY_RIGHT) && s.Length - 1 > Y + Z - ab / 48)
@@ -1236,7 +1236,7 @@ public class MinigameScene : IScene
                                     }
 
                                     j1();
-                                    h[24].a1(ai[Y], h[24]._posY, 5);
+                                    h[24].a1(ai[Y], h[24].posY, 5);
                                 }
                             }
                         }
@@ -1301,7 +1301,7 @@ public class MinigameScene : IScene
 
                             for (var5 = 0; var5 < q.Length; ++var5)
                             {
-                                q[var5]._posX = var5 * 48 + 5 + ab;
+                                q[var5].posX = var5 * 48 + 5 + ab;
                             }
                             
                             h[25].SetIsVisible(false);
@@ -1437,8 +1437,8 @@ public class MinigameScene : IScene
                     AudioManager.b1(1, GameContext.FileManager.GetLoadedSound("se_004.mld"), 100, 0);
                     af = false;
                     var2.ExecuteTransition(0);
-                    h[19].SetPosition(h[19]._posX + 2, h[19]._posY + 2);
-                    h[20].SetPosition(h[20]._posX + 2, h[20]._posY + 2);
+                    h[19].SetPosition(h[19].posX + 2, h[19].posY + 2);
+                    h[20].SetPosition(h[20].posX + 2, h[20].posY + 2);
                     d1(false);
                     if (am == 2)
                     {
@@ -1674,7 +1674,7 @@ public class MinigameScene : IScene
                 else
                 {
                     h[3].SetIsVisible(true);
-                    h[3].SetPosition(h[11]._posX, h[11]._posY - 10);
+                    h[3].SetPosition(h[11].posX, h[11].posY - 10);
                 }
 
                 if (var3)
@@ -1799,8 +1799,8 @@ public class MinigameScene : IScene
     [FunctionName("e")]
     private void e1()
     {
-        h[5]._posX = 2 - ap;
-        h[6]._posX = 230 + ap;
+        h[5].posX = 2 - ap;
+        h[6].posX = 230 + ap;
         if (aq)
         {
             ++ap;
@@ -2130,11 +2130,11 @@ public class MinigameScene : IScene
         {
             if (var1 == 0)
             {
-                q[var2].a1(q[var2]._posX + 48, q[var2]._posY, 5);
+                q[var2].a1(q[var2].posX + 48, q[var2].posY, 5);
             }
             else if (var1 == 1)
             {
-                q[var2].a1(q[var2]._posX - 48, q[var2]._posY, 5);
+                q[var2].a1(q[var2].posX - 48, q[var2].posY, 5);
             }
         }
     }
@@ -2179,7 +2179,7 @@ public class MinigameScene : IScene
     {
         for (int var1 = 0; var1 < q.Length; ++var1)
         {
-            q[var1]._posX = var1 * 48 + 5 + ab;
+            q[var1].posX = var1 * 48 + 5 + ab;
         }
 
         l1();
@@ -2564,7 +2564,7 @@ public class MinigameScene : IScene
     [FunctionName("h")]
     private void h1(int var1)
     {
-        h[7]._posX = F[var1];
+        h[7].posX = F[var1];
         if (var1 == 0)
         {
             i[6].SetIsVisible(true);
@@ -2942,16 +2942,16 @@ public class MinigameScene : IScene
             h[2].SetIsVisible(false);
         }
 
-        int var14 = f[J - 1]._posX;
-        int var15 = f[J - 1]._posY;
-        int var16 = g[J - 1]._posX;
-        int var17 = g[J - 1]._posY;
-        int var18 = g[J - 1 + 36]._posX;
-        int var19 = g[J - 1 + 36]._posY;
-        int var20 = g[J - 1 + 72]._posX;
-        int var21 = g[J - 1 + 72]._posY;
-        int var22 = g[J - 1 + 108]._posX;
-        int var23 = g[J - 1 + 108]._posY;
+        int var14 = f[J - 1].posX;
+        int var15 = f[J - 1].posY;
+        int var16 = g[J - 1].posX;
+        int var17 = g[J - 1].posY;
+        int var18 = g[J - 1 + 36].posX;
+        int var19 = g[J - 1 + 36].posY;
+        int var20 = g[J - 1 + 72].posX;
+        int var21 = g[J - 1 + 72].posY;
+        int var22 = g[J - 1 + 108].posX;
+        int var23 = g[J - 1 + 108].posY;
         int var12;
         int var13;
         if (var3 != -1)
@@ -2971,12 +2971,12 @@ public class MinigameScene : IScene
             switch (K)
             {
                 case 0:
-                    f[J]._posY = var15 - (var15 - var13 + aC[var3][1]) + 2;
+                    f[J].posY = var15 - (var15 - var13 + aC[var3][1]) + 2;
                     f[J].SetSize(3, var15 - var13 + aC[var3][1]);
-                    g[J]._posY = var17 - (var17 - var13 + aC[var3][1]) + 2;
-                    g[J + 36]._posY = var19 - (var19 - var13 + aC[var3][1]) + 2;
-                    g[J + 72]._posY = var21 - (var21 - var13 + aC[var3][1]) + 2;
-                    g[J + 108]._posY = var23 - (var23 - var13 + aC[var3][1]) + 2;
+                    g[J].posY = var17 - (var17 - var13 + aC[var3][1]) + 2;
+                    g[J + 36].posY = var19 - (var19 - var13 + aC[var3][1]) + 2;
+                    g[J + 72].posY = var21 - (var21 - var13 + aC[var3][1]) + 2;
+                    g[J + 108].posY = var23 - (var23 - var13 + aC[var3][1]) + 2;
                     g[J].SetSize(1, var17 - var13 + aC[var3][1]);
                     g[J + 36].SetSize(1, var19 - var13 + aC[var3][1]);
                     g[J + 72].SetSize(1, var21 - var13 + aC[var3][1]);
@@ -2997,12 +2997,12 @@ public class MinigameScene : IScene
                     g[J + 108].SetSize(1, var13 - var23 + aC[var3][1]);
                     break;
                 case 3:
-                    f[J]._posX = var14 - (var14 - var12 + aC[var3][0]) + 5;
+                    f[J].posX = var14 - (var14 - var12 + aC[var3][0]) + 5;
                     f[J].SetSize(var14 - var12 + aC[var3][0], 3);
-                    g[J]._posX = var16 - (var16 - var12 + aC[var3][0]) + 5;
-                    g[J + 36]._posX = var18 - (var18 - var12 + aC[var3][0]) + 5;
-                    g[J + 72]._posX = var20 - (var20 - var12 + aC[var3][0]) + 5;
-                    g[J + 108]._posX = var22 - (var22 - var12 + aC[var3][0]) + 5;
+                    g[J].posX = var16 - (var16 - var12 + aC[var3][0]) + 5;
+                    g[J + 36].posX = var18 - (var18 - var12 + aC[var3][0]) + 5;
+                    g[J + 72].posX = var20 - (var20 - var12 + aC[var3][0]) + 5;
+                    g[J + 108].posX = var22 - (var22 - var12 + aC[var3][0]) + 5;
                     g[J].SetSize(var16 - var12 + aC[var3][0], 1);
                     g[J + 36].SetSize(var18 - var12 + aC[var3][0], 1);
                     g[J + 72].SetSize(var20 - var12 + aC[var3][0], 1);
@@ -3017,12 +3017,12 @@ public class MinigameScene : IScene
             switch (K)
             {
                 case 0:
-                    f[J]._posY = var15 - (var15 - var13) + 3;
+                    f[J].posY = var15 - (var15 - var13) + 3;
                     f[J].SetSize(3, var15 - var13 + 2);
-                    g[J]._posY = var17 - (var17 - var13) + 3;
-                    g[J + 36]._posY = var19 - (var19 - var13) + 3;
-                    g[J + 72]._posY = var21 - (var21 - var13) + 3;
-                    g[J + 108]._posY = var23 - (var23 - var13) + 3;
+                    g[J].posY = var17 - (var17 - var13) + 3;
+                    g[J + 36].posY = var19 - (var19 - var13) + 3;
+                    g[J + 72].posY = var21 - (var21 - var13) + 3;
+                    g[J + 108].posY = var23 - (var23 - var13) + 3;
                     g[J].SetSize(1, var17 - var13 + 2);
                     g[J + 36].SetSize(1, var19 - var13 + 2);
                     g[J + 72].SetSize(1, var21 - var13 + 2);
@@ -3043,12 +3043,12 @@ public class MinigameScene : IScene
                     g[J + 108].SetSize(1, var13 - var23);
                     break;
                 case 3:
-                    f[J]._posX = var14 - (var14 - var12) + 3;
+                    f[J].posX = var14 - (var14 - var12) + 3;
                     f[J].SetSize(var14 - var12 + 2, 3);
-                    g[J]._posX = var16 - (var16 - var12) + 3;
-                    g[J + 36]._posX = var18 - (var18 - var12) + 3;
-                    g[J + 72]._posX = var20 - (var20 - var12) + 3;
-                    g[J + 108]._posX = var22 - (var22 - var12) + 3;
+                    g[J].posX = var16 - (var16 - var12) + 3;
+                    g[J + 36].posX = var18 - (var18 - var12) + 3;
+                    g[J + 72].posX = var20 - (var20 - var12) + 3;
+                    g[J + 108].posX = var22 - (var22 - var12) + 3;
                     g[J].SetSize(var16 - var12 + 2, 1);
                     g[J + 36].SetSize(var18 - var12 + 2, 1);
                     g[J + 72].SetSize(var20 - var12 + 2, 1);
@@ -3132,7 +3132,7 @@ public class MinigameScene : IScene
     {
         Y = 2;
         Z = 0;
-        h[24].SetPosition(ai[Y], h[24]._posY);
+        h[24].SetPosition(ai[Y], h[24].posY);
         h[25].SetIsVisible(false);
     }
 
@@ -3183,6 +3183,6 @@ public class MinigameScene : IScene
                 break;
         }
 
-        h[24].a1(ai[Y], h[24]._posY, 1);
+        h[24].a1(ai[Y], h[24].posY, 1);
     }
 }

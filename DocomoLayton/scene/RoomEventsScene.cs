@@ -237,7 +237,7 @@ public class RoomEventsScene : IScene
                     {
                         _state = 99;
                         b1();
-                        AudioManager.b1(1, GameContext.FileManager.GetLoadedSound("se_004.mld"), 100);
+                        AudioManager.PlaySound(1, GameContext.FileManager.GetLoadedSound("se_004.mld"), 100);
                         gameContext.RoomData.a1(false);
                     }
                     else
@@ -262,7 +262,7 @@ public class RoomEventsScene : IScene
                             i.ExecuteFullTransition(1, 4);
                             i.SetIsVisible(true);
                             _state = 2;
-                            AudioManager.b1(1, GameContext.FileManager.GetLoadedSound("se_011.mld"), 100);
+                            AudioManager.PlaySound(1, GameContext.FileManager.GetLoadedSound("se_011.mld"), 100);
                         }
                         else if (w != 0 && w != 3 && w != 100)
                         {
@@ -271,7 +271,7 @@ public class RoomEventsScene : IScene
                                 gameContext.RoomData.SetEventId(gameContext.RoomData.j1(_roomEventId));
                                 if (gameContext.RoomData.GetEventState(gameContext.RoomData.GetEventId(), 2))
                                 {
-                                    AudioManager.b1(1, GameContext.FileManager.GetLoadedSound("se_004.mld"), 100);
+                                    AudioManager.PlaySound(1, GameContext.FileManager.GetLoadedSound("se_004.mld"), 100);
                                     a1(false);
                                     _state = 97;
                                     return true;
@@ -285,7 +285,7 @@ public class RoomEventsScene : IScene
                                 a1(m, a2, -7, C);
                                 D = true;
                                 _state = 3;
-                                AudioManager.b1(1, GameContext.FileManager.GetLoadedSound("se_011.mld"), 100);
+                                AudioManager.PlaySound(1, GameContext.FileManager.GetLoadedSound("se_011.mld"), 100);
                                 gameContext.ScreenResource.MarkVisible();
                             }
                             else if (w != 100 && w == 101)
@@ -307,8 +307,8 @@ public class RoomEventsScene : IScene
                                     p[var5].ExecuteTransition(0, 5);
                                 }
 
-                                AudioManager.b1(1, gameContext.ScriptResourceFileManager.GetLoadedSound("se_046.mld"), 100);
-                                AudioManager.b1(2, gameContext.ScriptResourceFileManager.GetLoadedSound("se_047.mld"), 100);
+                                AudioManager.PlaySound(1, gameContext.ScriptResourceFileManager.GetLoadedSound("se_046.mld"), 100);
+                                AudioManager.PlaySound(2, gameContext.ScriptResourceFileManager.GetLoadedSound("se_047.mld"), 100);
                             }
                         }
                         else
@@ -316,7 +316,7 @@ public class RoomEventsScene : IScene
                             gameContext.RoomData.SetEventId(gameContext.RoomData.j1(_roomEventId));
                             if (gameContext.RoomData.GetEventState(gameContext.RoomData.GetEventId(), 2))
                             {
-                                AudioManager.b1(1, GameContext.FileManager.GetLoadedSound("se_004.mld"), 100);
+                                AudioManager.PlaySound(1, GameContext.FileManager.GetLoadedSound("se_004.mld"), 100);
                                 a1(false);
                                 _state = 97;
                                 return true;
@@ -329,7 +329,7 @@ public class RoomEventsScene : IScene
                             a1(l, a2, -50, C);
                             D = true;
                             _state = 3;
-                            AudioManager.b1(1, GameContext.FileManager.GetLoadedSound("se_011.mld"), 100);
+                            AudioManager.PlaySound(1, GameContext.FileManager.GetLoadedSound("se_011.mld"), 100);
                             if (w == 0 || w == 3)
                             {
                                 gameContext.ScreenResource.MarkVisible();
@@ -345,7 +345,7 @@ public class RoomEventsScene : IScene
                         _state = 99;
                         a1(-1);
                         b1();
-                        AudioManager.b1(1, GameContext.FileManager.GetLoadedSound("se_004.mld"), 100);
+                        AudioManager.PlaySound(1, GameContext.FileManager.GetLoadedSound("se_004.mld"), 100);
                         gameContext.RoomData.a1(false);
                     }
                 }
@@ -353,7 +353,7 @@ public class RoomEventsScene : IScene
                 {
                     _roomEventId = var3;
                     a1(gameContext.RoomData.i1(_roomEventId));
-                    AudioManager.b1(1, GameContext.FileManager.GetLoadedSound("se_018.mld"), 100);
+                    AudioManager.PlaySound(1, GameContext.FileManager.GetLoadedSound("se_018.mld"), 100);
                 }
                 break;
             
@@ -505,8 +505,8 @@ public class RoomEventsScene : IScene
     [FunctionName("b")]
     private void b1()
     {
-        f.SetPosition(f._posX + 2, f._posY + 2);
-        g.SetPosition(g._posX + 2, g._posY + 2);
+        f.SetPosition(f.posX + 2, f.posY + 2);
+        g.SetPosition(g.posX + 2, g.posY + 2);
     }
 
     [FunctionName("a")]

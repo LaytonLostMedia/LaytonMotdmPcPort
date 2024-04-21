@@ -44,8 +44,8 @@ public class TextResource : ResourceBase
     [ConstructorName("v")]
     private TextResource()
     {
-        _posX = 0;
-        _posY = 0;
+        posX = 0;
+        posY = 0;
         _textWidth = 0;
         _anchorType = 0;
         _outlineMode = 0;
@@ -107,8 +107,8 @@ public class TextResource : ResourceBase
                 g.SetFont(Font.GetFont(0x70000300));
                 break;
         }
-        int textPosX = x + _posX + _anchorPosX;
-        int textPosY = y + _posY + GameContext.FontAscent;
+        int textPosX = x + posX + _anchorPosX;
+        int textPosY = y + posY + GameContext.FontAscent;
 
         if (_outlineMode == OUTLINE_SHADOW)
         {

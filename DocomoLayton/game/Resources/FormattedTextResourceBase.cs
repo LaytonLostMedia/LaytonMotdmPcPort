@@ -255,9 +255,9 @@ public abstract class FormattedTextResourceBase : ResourceBase
         int i;
         if ((i = _totalText.Length) >= _totalLength)
             i = _totalLength - 1;
-        q._posX = 64 + i * 16;
+        q.posX = 64 + i * 16;
         if (y >= 3)
-            q._posX = arrayOfInt[_totalLength - 1, i] + 14;
+            q.posX = arrayOfInt[_totalLength - 1, i] + 14;
         P++;
         if (P < 10)
         {

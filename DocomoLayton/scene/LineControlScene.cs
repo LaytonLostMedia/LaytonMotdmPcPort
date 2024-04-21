@@ -74,11 +74,11 @@ public class LineControlScene : ControlScene
     }
 
     [FunctionName("d")]
-    public override void d1(GameContext var1)
+    public override void UpdateInternal(GameContext var1)
     {
         JavaString var2;
         int var3;
-        if (!(var2 = e1(var1)).Equals("answer"))
+        if (!(var2 = GetPressedButtonCaption(var1)).Equals("answer"))
         {
             if (var2.Equals("pre_return"))
             {
@@ -108,8 +108,8 @@ public class LineControlScene : ControlScene
                             break;
                     }
 
-                    v._posY = j();
-                    AudioManager.b1(1, n[1], 100);
+                    v.posY = j();
+                    AudioManager.PlaySound(1, n[1], 100);
                     C = 0;
                 }
                 else
@@ -256,11 +256,11 @@ public class LineControlScene : ControlScene
                             }
                         }
 
-                        AudioManager.b1(1, n[8], 100);
+                        AudioManager.PlaySound(1, n[8], 100);
                     }
                     else
                     {
-                        AudioManager.b1(1, n[8], 100);
+                        AudioManager.PlaySound(1, n[8], 100);
                     }
 
                     B = var3;
@@ -467,17 +467,17 @@ public class LineControlScene : ControlScene
     }
 
     [FunctionName("f")]
-    public override void f1()
+    public override void ResetInternal()
     {
         if (a != null)
         {
-            a.d();
+            a.Dispose();
             a = null;
         }
 
         if (v != null)
         {
-            v.d();
+            v.Dispose();
             v = null;
         }
 

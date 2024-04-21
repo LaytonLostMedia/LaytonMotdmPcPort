@@ -257,9 +257,9 @@ public class PuzzleResource : ResourceBase
         for (int var8 = 0; var8 <= var7.k.Length - 1; ++var8)
         {
             ResourceBase var10000 = var7.k[var8];
-            var10000._posX += imgPosX;
+            var10000.posX += imgPosX;
             var10000 = var7.k[var8];
-            var10000._posY += imgPosY;
+            var10000.posY += imgPosY;
             var7.AddChild(var7.k[var8]);
         }
 
@@ -404,7 +404,7 @@ public class PuzzleResource : ResourceBase
         {
             ImageResource var4;
             (var4 = (ImageResource)l).Destroy();
-            var4.d();
+            var4.Dispose();
             l = null;
         }
 

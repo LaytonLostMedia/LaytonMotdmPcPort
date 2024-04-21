@@ -211,8 +211,8 @@ public class SaveGameScene : IScene
                     else
                     {
                         AudioManager.b1(1, GameContext.FileManager.GetLoadedSound("se_004.mld"), 100, 0);
-                        h[6].SetPosition(h[6]._posX + 2, h[6]._posY + 2);
-                        h[7].SetPosition(h[7]._posX + 2, h[7]._posY + 2);
+                        h[6].SetPosition(h[6].posX + 2, h[6].posY + 2);
+                        h[7].SetPosition(h[7].posX + 2, h[7].posY + 2);
                         var3 = true;
                     }
                 }
@@ -290,7 +290,7 @@ public class SaveGameScene : IScene
     [FunctionName("b")]
     private void b1(int var1)
     {
-        h[3]._posX = i[var1][0];
+        h[3].posX = i[var1][0];
         h[5].SetIsVisible(false);
         h[7].SetIsVisible(false);
         h[5 + var1 * 2].SetIsVisible(true);

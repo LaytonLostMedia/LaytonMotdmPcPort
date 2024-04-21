@@ -19,9 +19,9 @@ public abstract class ResourceBase
     protected bool _isVisible = true;
 
     [MemberName("e")]
-    public int _posX = 0;
+    public int posX = 0;
     [MemberName("f")]
-    public int _posY = 0;
+    public int posY = 0;
 
     [MemberName("k")]
     private int k;
@@ -75,8 +75,8 @@ public abstract class ResourceBase
     [FunctionName("c")]
     public void SetPosition(int x, int y)
     {
-        _posX = x;
-        _posY = y;
+        posX = x;
+        posY = y;
     }
 
     [FunctionName("a")]
@@ -255,7 +255,7 @@ public abstract class ResourceBase
 
             for (var4 = ChildResource; var4 != null; var4 = var4._parentResource)
             {
-                var4.Paint(graphics, x + _posX, y + _posY);
+                var4.Paint(graphics, x + posX, y + posY);
             }
         }
 
@@ -276,8 +276,8 @@ public abstract class ResourceBase
     [FunctionName("a")]
     public void a1(int var1, int var2, int var3)
     {
-        k = _posX;
-        l = _posY;
+        k = posX;
+        l = posY;
         m = var1;
         n = var2;
         p = 0;
@@ -294,8 +294,8 @@ public abstract class ResourceBase
         else
         {
             ++p;
-            _posX = (k * (o - p) + m * p) / o;
-            _posY = (l * (o - p) + n * p) / o;
+            posX = (k * (o - p) + m * p) / o;
+            posY = (l * (o - p) + n * p) / o;
             return false;
         }
     }

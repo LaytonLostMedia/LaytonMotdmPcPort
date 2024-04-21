@@ -120,8 +120,8 @@ public class KeyboardResource : ResourceBase
     [FunctionName("a")]
     protected override void PaintInternal(Graphics g, int x, int y)
     {
-        int i = x + _posX + k;
-        int j = y + _posY;
+        int i = x + posX + k;
+        int j = y + posY;
         byte b = 0;
         while (b < u.Length)
         {
