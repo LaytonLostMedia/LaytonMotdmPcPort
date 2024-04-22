@@ -2,7 +2,6 @@
 using ImGui.Forms.Controls.Base;
 using ImGui.Forms.Controls.Layouts;
 using ImGui.Forms.Models;
-using ImGui.Forms.Models.IO;
 using LaytonMotdm.Resources;
 using Veldrid;
 
@@ -11,22 +10,37 @@ namespace LaytonMotdm.Components
     internal class ChapterSelection : Component
     {
         private Label _selectLabel;
-
-        private Button _chapter1Btn;
-        private Button _chapter2Btn;
-        private Button _chapter3Btn;
-
         private StackLayout _chapterLayout;
 
         public int Chapter { get; private set; }
 
         public event EventHandler ChapterSelected;
 
-        public ChapterSelection()
+        public ChapterSelection(string locale)
         {
             _selectLabel = new Label { Text = LocalizationResources.ChapterSelectionLabel };
 
-            _chapterLayout = new StackLayout
+            _chapterLayout = CreateChapterLayout(locale);
+        }
+
+        public override Size GetSize()
+        {
+            return Size.Parent;
+        }
+
+        public void ChangeLocale(string locale)
+        {
+            _chapterLayout = CreateChapterLayout(locale);
+        }
+
+        protected override void UpdateInternal(Rectangle contentRect)
+        {
+            _chapterLayout.Update(contentRect);
+        }
+
+        private StackLayout CreateChapterLayout(string locale)
+        {
+            var chapterLayout = new StackLayout
             {
                 Size = Size.Content,
                 Alignment = Alignment.Vertical,
@@ -38,24 +52,20 @@ namespace LaytonMotdm.Components
                 }
             };
 
-            AddChapterButtons(_chapterLayout);
+            AddChapterButtons(chapterLayout, locale);
+
+            return chapterLayout;
         }
 
-        public override Size GetSize()
+        private void AddChapterButtons(StackLayout chapterLayout, string locale)
         {
-            return Size.Parent;
-        }
+            string baseDir = Path.Combine("resources", locale);
+            if(!Directory.Exists(baseDir))
+                return;
 
-        protected override void UpdateInternal(Rectangle contentRect)
-        {
-            _chapterLayout.Update(contentRect);
-        }
-
-        private void AddChapterButtons(StackLayout chapterLayout)
-        {
-            foreach (string resourcePath in Directory.GetDirectories("resources", "*", SearchOption.TopDirectoryOnly))
+            foreach (string resourcePath in Directory.GetDirectories(baseDir, "*", SearchOption.TopDirectoryOnly))
             {
-                string resourceDirectory = Path.GetRelativePath("resources", resourcePath);
+                string resourceDirectory = Path.GetRelativePath(baseDir, resourcePath);
                 if (!resourceDirectory.StartsWith("deathmirror"))
                     continue;
 
@@ -75,7 +85,7 @@ namespace LaytonMotdm.Components
         {
             Chapter = chapter;
 
-            ChapterSelected?.Invoke(this, EventArgs.Empty);
+            ChapterSelected.Invoke(this, EventArgs.Empty);
         }
     }
 }

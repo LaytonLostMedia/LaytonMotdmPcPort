@@ -123,7 +123,7 @@ public class Helper
             }
             b2++;
         }
-        return JavaString.Create(wideBuffer);
+        return new JavaString(wideBuffer);
     }
 }
 

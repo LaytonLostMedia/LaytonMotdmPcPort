@@ -12,5 +12,8 @@ namespace LaytonMotdm.Resources
 
         public static LocalizedString ChapterSelectionLabel => new("Chapter.Selection.Label");
         public static LocalizedString ChapterSelectionCaption(int chapter) => new("Chapter.Selection.Caption", () => chapter);
+
+        public static LocalizedString LanguageSelectionLabel => new("Language.Selection.Label");
+        public static LocalizedString LanguageSelectionCaption(string langName) => new($"Language.Selection.{langName}");
     }
 }

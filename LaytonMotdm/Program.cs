@@ -1,7 +1,10 @@
-﻿using LaytonMotdm.Forms;
+﻿using System.Text;
+using LaytonMotdm.Forms;
 using ImGui.Forms;
 using LaytonMotdm.Resources;
 using Serilog;
+
+Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
 var logConfig = new LoggerConfiguration();
 logConfig.WriteTo.Console();

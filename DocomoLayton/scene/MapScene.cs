@@ -208,7 +208,7 @@ public class MapScene : IScene
     [FunctionName("a")]
     private void a1(int var1)
     {
-        JavaString[] var3 = Helper.a1(JavaString.Create(l.GetLoadedData("map.dat")), "\r\n");
+        JavaString[] var3 = Helper.a1(new JavaString(l.GetLoadedData("map.dat")), "\r\n");
         if (var1 < 0 || var1 >= var3.Length)
         {
             DocomoCsJavaBridge.System.Out.Error("現在地の値が不正です:{0}", var1);
@@ -225,7 +225,7 @@ public class MapScene : IScene
     [FunctionName("b")]
     private void b1(int var1)
     {
-        JavaString[] var3 = Helper.a1(JavaString.Create(l.GetLoadedData("target.dat")), "\r\n");
+        JavaString[] var3 = Helper.a1(new JavaString(l.GetLoadedData("target.dat")), "\r\n");
         if (var1 < 0 || var1 >= var3.Length)
         {
             DocomoCsJavaBridge.System.Out.Error("目的IDの値が不正です:{0}", var1);

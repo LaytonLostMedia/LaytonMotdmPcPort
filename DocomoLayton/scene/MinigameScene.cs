@@ -1,4 +1,3 @@
-using System.Text;
 using com.nttdocomo.ui;
 using DocomoCsJavaBridge;
 using DocomoCsJavaBridge.Aspects;
@@ -298,7 +297,7 @@ public class MinigameScene : IScene
         }
         else
         {
-            C = JavaString.Create(D.GetLoadedData("monooki.dat"));
+            C = new JavaString(D.GetLoadedData("monooki.dat"));
             t = gameContext.SaveData.z1();
             if (t == 3)
             {

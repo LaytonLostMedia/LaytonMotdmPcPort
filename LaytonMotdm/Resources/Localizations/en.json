@@ -5,5 +5,9 @@
   "Application.Title.Chapter": "Layton MotDM Chapter {0}",
 
   "Chapter.Selection.Label": "Select chapter:",
-  "Chapter.Selection.Caption": "Chapter {0}"
+  "Chapter.Selection.Caption": "Chapter {0}",
+
+  "Language.Selection.Label": "Game langauge:",
+  "Language.Selection.Japanese": "Japanese",
+  "Language.Selection.English": "English"
 }

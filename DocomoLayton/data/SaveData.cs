@@ -401,7 +401,7 @@ public class SaveData
         bool var3 = false;
         byte[] var4 = new byte[16];
         Array.Copy(var2, 0, var4, 0, var4.Length);
-        _name = JavaString.Create(var4).Trim();
+        _name = new JavaString(var4).Trim();
         int var7 = var4.Length;
         c = var2[var7++] & 255;
         c |= var2[var7++] << 8 & '\uffff';
@@ -506,7 +506,7 @@ public class SaveData
         bool var3 = false;
         byte[] var4 = JavaString.GetBytes("                ");
         byte[] var5;
-        Array.Copy(var5 = JavaString.GetBytes(_name), 0, var4, 0, var5.Length);
+        Array.Copy(var5 = _name.GetBytes(), 0, var4, 0, var5.Length);
         int var8 = var4.Length;
         Array.Copy(var4, 0, var2, 0, var8);
         var2[var8++] = (byte)(c & 255);

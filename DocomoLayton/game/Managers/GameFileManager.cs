@@ -329,7 +329,7 @@ public class GameFileManager : FileManagerBase
 
             try
             {
-                JavaString indexText = JavaString.Create(indexFileData);
+                JavaString indexText = new JavaString(indexFileData);
 
                 int delimiterIndex = indexText.IndexOf('\n') - 1;
                 int fileCount = int.Parse(indexText.Substring(0, delimiterIndex));

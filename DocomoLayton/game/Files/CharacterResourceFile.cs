@@ -253,6 +253,6 @@ public class CharacterResourceFile
 
         _sectionSize -= var3.Length;
 
-        return JavaString.Create(var3);
+        return new JavaString(var3);
     }
 }

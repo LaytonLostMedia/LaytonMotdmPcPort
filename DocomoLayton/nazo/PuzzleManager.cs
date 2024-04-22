@@ -627,6 +627,6 @@ public class PuzzleManager
         byte[] arrayOfByte = new byte[s = ReadInt16(paramBinaryReader.BaseStream)];
         paramBinaryReader.Read(arrayOfByte);
         _resourceSectionSize -= s;
-        return JavaString.Create(arrayOfByte);
+        return new JavaString(arrayOfByte);
     }
 }

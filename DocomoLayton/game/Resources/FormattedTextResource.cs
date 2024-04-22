@@ -610,7 +610,7 @@ public class FormattedTextResource : FormattedTextResourceBase
 
                                         try
                                         {
-                                            var7 = JavaString.Create(var9.Cast<byte>().ToArray());
+                                            var7 = new JavaString(var9.Cast<byte>().ToArray());
                                             Append(var7);
                                         }
                                         catch (Exception var6)
@@ -625,7 +625,7 @@ public class FormattedTextResource : FormattedTextResourceBase
 
                                         try
                                         {
-                                            var7 = JavaString.Create(var9.Cast<byte>().ToArray());
+                                            var7 = new JavaString(var9.Cast<byte>().ToArray());
                                             Append(var7);
                                         }
                                         catch (Exception var5)

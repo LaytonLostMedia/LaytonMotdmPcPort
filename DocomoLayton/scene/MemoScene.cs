@@ -157,7 +157,7 @@ public class MemoScene : IScene
     [FunctionName("a")]
     private void a1()
     {
-        var var1 = JavaString.Create(h.GetLoadedData("memo.dat"));
+        var var1 = new JavaString(h.GetLoadedData("memo.dat"));
         d = new JavaString[15][];
         int var2 = 0;
         bool var3 = false;

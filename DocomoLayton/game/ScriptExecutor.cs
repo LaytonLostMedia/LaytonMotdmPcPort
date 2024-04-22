@@ -182,7 +182,7 @@ public class ScriptExecutor
                     m = new byte[l];
                     Array.Copy(scriptData, offset, m, 0, l);
                     offset += l;
-                    resourceIndex = _roomData.AddEventText(JavaString.Create(m)) - 1;
+                    resourceIndex = _roomData.AddEventText(new JavaString(m)) - 1;
                     if (n == 4)
                     {
                         D = scriptData[offset++];
@@ -312,7 +312,7 @@ public class ScriptExecutor
                     q = new byte[l];
                     Array.Copy(scriptData, offset, q, 0, l);
                     offset += l;
-                    J = JavaString.Create(q);
+                    J = new JavaString(q);
                     K = new JavaString[LoadFileCount];
 
                     for (resourceIndex = 0; resourceIndex < LoadFileCount; ++resourceIndex)
@@ -321,7 +321,7 @@ public class ScriptExecutor
                         q = new byte[l];
                         Array.Copy(scriptData, offset, q, 0, l);
                         offset += l;
-                        K[resourceIndex] = JavaString.Create(q);
+                        K[resourceIndex] = new JavaString(q);
                     }
 
                     L = scriptData[offset++];
@@ -599,7 +599,7 @@ public class ScriptExecutor
                 q = new byte[l];
                 Array.Copy(scriptData, offset, q, 0, l);
                 offset += l;
-                v = JavaString.Create(q);
+                v = new JavaString(q);
             }
 
             if (Identifier.Equals("addMemo"))
@@ -629,7 +629,7 @@ public class ScriptExecutor
                 q = new byte[A];
                 Array.Copy(scriptData, offset, q, 0, A);
                 offset += A;
-                SoundFile = JavaString.Create(q);
+                SoundFile = new JavaString(q);
                 B = (scriptData[offset++]) == 1;
             }
 
@@ -649,7 +649,7 @@ public class ScriptExecutor
                 q = new byte[A];
                 Array.Copy(scriptData, offset, q, 0, A);
                 offset += A;
-                SoundFile = JavaString.Create(q);
+                SoundFile = new JavaString(q);
                 B = (scriptData[offset++]) == 1;
             }
 
@@ -661,7 +661,7 @@ public class ScriptExecutor
                 q = new byte[A];
                 Array.Copy(scriptData, offset, q, 0, A);
                 offset += A;
-                I = JavaString.Create(q);
+                I = new JavaString(q);
             }
 
             if (Identifier.Equals("SetBG"))
@@ -794,7 +794,7 @@ public class ScriptExecutor
                     q = new byte[A];
                     Array.Copy(scriptData, offset, q, 0, A);
                     offset += A;
-                    ResourceFileNames[resourceIndex] = JavaString.Create(q);
+                    ResourceFileNames[resourceIndex] = new JavaString(q);
                 }
             }
 
@@ -811,7 +811,7 @@ public class ScriptExecutor
                     q = new byte[A];
                     Array.Copy(scriptData, offset, q, 0, A);
                     offset += A;
-                    BackgroundFileNames[resourceIndex] = JavaString.Create(q);
+                    BackgroundFileNames[resourceIndex] = new JavaString(q);
                 }
             }
 
@@ -865,7 +865,7 @@ public class ScriptExecutor
             identifierBuffer[var4] = scriptData[offset + var4];
         }
 
-        Identifier = JavaString.Create(identifierBuffer).Trim();
+        Identifier = new JavaString(identifierBuffer).Trim();
         offset += 10;
         return offset;
     }

@@ -1,13 +1,11 @@
 ﻿using System.Diagnostics;
-using System.Text;
+using DocomoCsJavaBridge.Providers;
 
 namespace DocomoCsJavaBridge
 {
     [DebuggerDisplay("{_value}")]
     public readonly struct JavaString
     {
-        private static readonly Encoding _sjis;
-
         public static readonly JavaString Empty = string.Empty;
 
         private readonly string _value;
@@ -17,14 +15,19 @@ namespace DocomoCsJavaBridge
 
         public int Length => _value.Length;
 
-        static JavaString()
+        public JavaString(byte[] data)
         {
-            _sjis = CodePagesEncodingProvider.Instance.GetEncoding("Shift-JIS");
+            _value = EncodingProvider.Instance.GetEncoding().GetString(data);
         }
 
         private JavaString(string value)
         {
             _value = value;
+        }
+
+        public byte[] GetBytes()
+        {
+            return EncodingProvider.Instance.GetEncoding().GetBytes(_value);
         }
 
         public int IndexOf(char needle)
@@ -96,14 +99,9 @@ namespace DocomoCsJavaBridge
             return new JavaString(_value[k..(m + 1)]);
         }
 
-        public static JavaString Create(byte[] data)
-        {
-            return new JavaString(_sjis.GetString(data));
-        }
-
         public static byte[] GetBytes(JavaString value)
         {
-            return _sjis.GetBytes(value);
+            return EncodingProvider.Instance.GetEncoding().GetBytes(value);
         }
 
         public static JavaString Concat(params char[] chars)
@@ -125,6 +123,7 @@ namespace DocomoCsJavaBridge
         }
 
         public static implicit operator string(JavaString s) => s._value;
+
         public static implicit operator JavaString(string s) => new(s);
     }
 }

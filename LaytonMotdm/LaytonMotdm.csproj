@@ -6,8 +6,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Nullable>enable</Nullable>
-    <!--<PublishAot>true</PublishAot>
-    <InvariantGlobalization>true</InvariantGlobalization>-->
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,6 +23,14 @@
     <Content Include="Resources\Localizations\en.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <TargetPath>langs\en.json</TargetPath>
+    </Content>
+    <Content Include="Resources\Configurations\en.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <TargetPath>configs\en.json</TargetPath>
+    </Content>
+    <Content Include="Resources\Configurations\jp.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <TargetPath>configs\jp.json</TargetPath>
     </Content>
   </ItemGroup>
 
