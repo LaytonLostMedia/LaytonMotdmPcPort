@@ -55,7 +55,7 @@ public class RoomEventsScene : IScene
     [MemberName("v")]
     private int v;
     [MemberName("w")]
-    private int w;
+    private int _eventType;
     [MemberName("x")]
     private int x;
     [MemberName("y")]
@@ -194,12 +194,12 @@ public class RoomEventsScene : IScene
         gameContext.RoomData.SetPlayerState(0);
         D = false;
         gameContext.b1(0);
-        a1(gameContext.RoomData.i1(_roomEventId));
+        a1(gameContext.RoomData.GetEventType(_roomEventId));
         t = false;
 
         for (int var8 = 0; var8 < _roomEventCount; ++var8)
         {
-            if (gameContext.RoomData.i1(var8) == -1)
+            if (gameContext.RoomData.GetEventType(var8) == -1)
             {
                 t = true;
                 break;
@@ -233,7 +233,7 @@ public class RoomEventsScene : IScene
                 int var3 = gameContext.MoveCursor(_roomEventId, gameContext.RoomData.GetEventRanksX(), gameContext.RoomData.GetEventRanksY(), false);
                 if (gameContext.IsKeyPressed(Display.KEY_MAIN))
                 {
-                    if (gameContext.RoomData.i1(_roomEventId) == -1)
+                    if (gameContext.RoomData.GetEventType(_roomEventId) == -1)
                     {
                         _state = 99;
                         b1();
@@ -242,14 +242,14 @@ public class RoomEventsScene : IScene
                     }
                     else
                     {
-                        w = gameContext.RoomData.i1(_roomEventId);
+                        _eventType = gameContext.RoomData.GetEventType(_roomEventId);
                         GameContext.RoomEventId = _roomEventId;
                         a2 = gameContext.RoomData.GetEventPosition(_roomEventId);
-                        if (w == 1)
+                        if (_eventType == 1)
                         {
                             bool var4 = false;
                             s.SetText(gameContext.RoomData.m1(gameContext.RoomData.GetEventTextId(_roomEventId)) + "[end]");
-                            if (gameContext.RoomData.j1(_roomEventId) == 0)
+                            if (gameContext.RoomData.GetEventSpeakerId(_roomEventId) == 0)
                             {
                                 ((ImageResource)j).SetImage(GameContext.FileManager.GetLoadedImage("c00_bg_0.gif"));
                             }
@@ -264,11 +264,11 @@ public class RoomEventsScene : IScene
                             _state = 2;
                             AudioManager.PlaySound(1, GameContext.FileManager.GetLoadedSound("se_011.mld"), 100);
                         }
-                        else if (w != 0 && w != 3 && w != 100)
+                        else if (_eventType != 0 && _eventType != 3 && _eventType != 100)
                         {
-                            if (w == 5)
+                            if (_eventType == 5)
                             {
-                                gameContext.RoomData.SetEventId(gameContext.RoomData.j1(_roomEventId));
+                                gameContext.RoomData.SetEventId(gameContext.RoomData.GetEventSpeakerId(_roomEventId));
                                 if (gameContext.RoomData.GetEventState(gameContext.RoomData.GetEventId(), 2))
                                 {
                                     AudioManager.PlaySound(1, GameContext.FileManager.GetLoadedSound("se_004.mld"), 100);
@@ -288,7 +288,7 @@ public class RoomEventsScene : IScene
                                 AudioManager.PlaySound(1, GameContext.FileManager.GetLoadedSound("se_011.mld"), 100);
                                 gameContext.ScreenResource.MarkVisible();
                             }
-                            else if (w != 100 && w == 101)
+                            else if (_eventType != 100 && _eventType == 101)
                             {
                                 _state = 4;
                                 o[0].SetIsVisible(false);
@@ -313,7 +313,7 @@ public class RoomEventsScene : IScene
                         }
                         else
                         {
-                            gameContext.RoomData.SetEventId(gameContext.RoomData.j1(_roomEventId));
+                            gameContext.RoomData.SetEventId(gameContext.RoomData.GetEventSpeakerId(_roomEventId));
                             if (gameContext.RoomData.GetEventState(gameContext.RoomData.GetEventId(), 2))
                             {
                                 AudioManager.PlaySound(1, GameContext.FileManager.GetLoadedSound("se_004.mld"), 100);
@@ -330,7 +330,7 @@ public class RoomEventsScene : IScene
                             D = true;
                             _state = 3;
                             AudioManager.PlaySound(1, GameContext.FileManager.GetLoadedSound("se_011.mld"), 100);
-                            if (w == 0 || w == 3)
+                            if (_eventType == 0 || _eventType == 3)
                             {
                                 gameContext.ScreenResource.MarkVisible();
                             }
@@ -352,7 +352,7 @@ public class RoomEventsScene : IScene
                 else if (var3 != -1)
                 {
                     _roomEventId = var3;
-                    a1(gameContext.RoomData.i1(_roomEventId));
+                    a1(gameContext.RoomData.GetEventType(_roomEventId));
                     AudioManager.PlaySound(1, GameContext.FileManager.GetLoadedSound("se_018.mld"), 100);
                 }
                 break;
@@ -386,12 +386,12 @@ public class RoomEventsScene : IScene
                     }
                     else
                     {
-                        if (w != 5)
+                        if (_eventType != 5)
                         {
                             n.SetIsVisible(false);
                         }
 
-                        if (w == 0 || w == 3 || w == 5)
+                        if (_eventType == 0 || _eventType == 3 || _eventType == 5)
                         {
                             var2.ExecuteTransition(0);
                             v = 0;

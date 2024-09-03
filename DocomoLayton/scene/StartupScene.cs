@@ -46,8 +46,8 @@ public class StartupScene : IScene
     private static int _chapter;
     public static int Chapter
     {
-        get => 2040 + _chapter;
-        set => _chapter = 2040 + value;
+        get => _chapter - 2040;
+        set => _chapter = value + 2040;
     }
 
     [ConstructorName("p")]

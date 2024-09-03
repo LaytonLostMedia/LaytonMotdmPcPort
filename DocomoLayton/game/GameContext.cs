@@ -559,7 +559,7 @@ public class GameContext : Canvas, ISystemMessageStorage
     [FunctionName("h")]
     public void h1()
     {
-        if (!FileManager.LoadFiles(StandardFileStorage.FilePaths))
+        if (!FileManager.LoadFiles(StandardFileStorage.FileNames))
             return;
 
         n1();

@@ -45,9 +45,9 @@ public class RoomData
     [MemberName("p")]
     private int _eventCount;
     [MemberName("q")]
-    private int[] q = new int[32];
+    private int[] _eventTypes = new int[32];
     [MemberName("r")]
-    private int[] r = new int[32];
+    private int[] _eventSpeakerIds = new int[32];
     [MemberName("s")]
     private int[,] _eventPositions = new int[32, 2];
 
@@ -314,8 +314,8 @@ public class RoomData
     {
         for (var i = 0; i < 32; ++i)
         {
-            q[i] = 0;
-            r[i] = 0;
+            _eventTypes[i] = 0;
+            _eventSpeakerIds[i] = 0;
             _eventPositions[i, 0] = _eventPositions[i, 1] = 0;
             EventTextIds[i] = 0;
             _eventRankX[i] = -1;
@@ -327,24 +327,24 @@ public class RoomData
     }
 
     [FunctionName("a")]
-    public void AddEvent(int var1, int var2, int var3, int var4, int var5, int var6, int eventTextId, int _, int var9)
+    public void AddEvent(int eventType, int speakerId, int rankX, int rankY, int posX, int posY, int eventTextId, int _, int var9)
     {
         w = var9;
-        AddEvent(var1, var2, var3, var4, var5, var6, eventTextId);
+        AddEvent(eventType, speakerId, rankX, rankY, posX, posY, eventTextId);
     }
 
     [FunctionName("a")]
-    public void AddEvent(int var1, int var2, int var3, int var4, int var5, int var6, int eventTextId)
+    public void AddEvent(int eventType, int speakerId, int rankX, int rankY, int posX, int posY, int eventTextId)
     {
         if (_eventCount < 32)
         {
-            q[_eventCount] = var1;
-            r[_eventCount] = var2;
-            _eventPositions[_eventCount, 0] = var5;
-            _eventPositions[_eventCount, 1] = var6;
+            _eventTypes[_eventCount] = eventType;
+            _eventSpeakerIds[_eventCount] = speakerId;
+            _eventPositions[_eventCount, 0] = posX;
+            _eventPositions[_eventCount, 1] = posY;
             EventTextIds[_eventCount] = eventTextId;
-            _eventRankX[_eventCount] = var3;
-            _eventRankY[_eventCount] = var4;
+            _eventRankX[_eventCount] = rankX;
+            _eventRankY[_eventCount] = rankY;
             ++_eventCount;
         }
     }
@@ -356,15 +356,15 @@ public class RoomData
     }
 
     [FunctionName("i")]
-    public int i1(int roomEventId)
+    public int GetEventType(int roomEventId)
     {
-        return q[roomEventId];
+        return _eventTypes[roomEventId];
     }
 
     [FunctionName("j")]
-    public int j1(int roomEventId)
+    public int GetEventSpeakerId(int roomEventId)
     {
-        return r[roomEventId];
+        return _eventSpeakerIds[roomEventId];
     }
 
     [FunctionName("m")]
