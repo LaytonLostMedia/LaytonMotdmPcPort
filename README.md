@@ -42,7 +42,7 @@ Provides logic to offer meta data from Java to C#:
 - JamResource and AppInfo; provides logic to parse the DoJa .jam file and access its data in a type-safe manner respectively
 
 ### Apps
-Contains apps that can be compiled and played by the player.<br>
-Every app represents its game's actual logic.<br>
+Contains apps that can be compiled and played by the player. Every app represents its game's actual logic.
+
 The code was decompiled from the .class Java files found in the game and adjusted to compile with C#. It was also annotated with attributes on classes, members, and methods to preserve the original, obfuscated names.<br>
 The tools to decompile the .class Java files were FernFlower (IntelliJ's built-in java decompiler) and http://www.javadecompilers.com also set to FernFlower. Some classes decompiled with better code flow on the online resource than IntelliJ.
