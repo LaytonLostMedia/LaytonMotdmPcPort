@@ -1,0 +1,12 @@
+{
+  "Name": "French",
+
+  "Application.Title": "DoCoMo Player",
+
+  "Game.Selection.Label": "Select game ({0}):",
+
+  "Language.Selection.Label": "Game language:",
+  "Language.Selection.Japanese": "Japanese",
+  "Language.Selection.English": "English",
+  "Language.Selection.French": "French"
+}

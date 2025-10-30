@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DoCoMoPlayer", "player\DoCoMoPlayer.csproj", "{59810597-D08B-4163-B40A-A2842586648F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocomoCsJavaBridge", "sdk\DocomoCsJavaBridge\DocomoCsJavaBridge.csproj", "{26E8CC76-BD07-4CF1-A77B-AAA585AB02C4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocomoJavaSdk", "sdk\DocomoJavaSdk\DocomoJavaSdk.csproj", "{92216B8B-D160-4C95-8BE4-40FF48E2DB8F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocomoSdk", "sdk\DocomoSdk\DocomoSdk.csproj", "{16AADFEF-8DC1-4F4E-B526-851664AF581F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocomoStarSdk", "sdk\DocomoStarSdk\DocomoStarSdk.csproj", "{B3F58A1B-11EA-43D9-ABA1-1ABD6107935B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SDK", "SDK", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{59810597-D08B-4163-B40A-A2842586648F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59810597-D08B-4163-B40A-A2842586648F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59810597-D08B-4163-B40A-A2842586648F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59810597-D08B-4163-B40A-A2842586648F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26E8CC76-BD07-4CF1-A77B-AAA585AB02C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26E8CC76-BD07-4CF1-A77B-AAA585AB02C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26E8CC76-BD07-4CF1-A77B-AAA585AB02C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26E8CC76-BD07-4CF1-A77B-AAA585AB02C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92216B8B-D160-4C95-8BE4-40FF48E2DB8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92216B8B-D160-4C95-8BE4-40FF48E2DB8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92216B8B-D160-4C95-8BE4-40FF48E2DB8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92216B8B-D160-4C95-8BE4-40FF48E2DB8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16AADFEF-8DC1-4F4E-B526-851664AF581F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16AADFEF-8DC1-4F4E-B526-851664AF581F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16AADFEF-8DC1-4F4E-B526-851664AF581F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16AADFEF-8DC1-4F4E-B526-851664AF581F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3F58A1B-11EA-43D9-ABA1-1ABD6107935B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3F58A1B-11EA-43D9-ABA1-1ABD6107935B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3F58A1B-11EA-43D9-ABA1-1ABD6107935B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3F58A1B-11EA-43D9-ABA1-1ABD6107935B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{26E8CC76-BD07-4CF1-A77B-AAA585AB02C4} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{92216B8B-D160-4C95-8BE4-40FF48E2DB8F} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{16AADFEF-8DC1-4F4E-B526-851664AF581F} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{B3F58A1B-11EA-43D9-ABA1-1ABD6107935B} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {19F657C4-F3CC-4EF0-8B41-1B49AB11F3AB}
+	EndGlobalSection
+EndGlobal

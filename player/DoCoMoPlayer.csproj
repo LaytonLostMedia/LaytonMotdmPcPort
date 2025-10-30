@@ -1,0 +1,63 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Fonts\notojp.ttf" />
+    <None Remove="Resources\Fonts\roboto.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Imgui.Forms" Version="1.0.64" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="5.0.1" />
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Localizations\en.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <TargetPath>resources\localizations\en.json</TargetPath>
+    </Content>
+    <Content Include="Resources\Localizations\fr.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <TargetPath>resources\localizations\fr.json</TargetPath>
+    </Content>
+    <Content Include="Resources\Configurations\en.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <TargetPath>resources\configs\en.json</TargetPath>
+    </Content>
+    <Content Include="Resources\Configurations\jp.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <TargetPath>resources\configs\jp.json</TargetPath>
+    </Content>
+    <Content Include="Resources\Configurations\fr.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <TargetPath>resources\configs\fr.json</TargetPath>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Fonts\notojp.ttf">
+      <LogicalName>notojp.ttf</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Fonts\roboto.ttf">
+      <LogicalName>roboto.ttf</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Images\icon.jpg">
+      <LogicalName>icon.jpg</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\sdk\DocomoSdk\DocomoSdk.csproj" />
+    <ProjectReference Include="..\sdk\DocomoStarSdk\DocomoStarSdk.csproj" />
+  </ItemGroup>
+
+</Project>
